@@ -3,6 +3,15 @@ en:
     coppyright: "Copyright"
     home: "Home"
     welcome: "Wellcome to Framgia E-learning"
+    hello: "Hello %{username}"
     signup: "Signup"
     login: "Login"
     logout: "Logout"
+  user:
+    name: "Name"
+    password: "Passowrd"
+    password_cf: "Password Confirmation"
+  account:
+    check_email: "Check your email for the activation link."
+    active: "Account activation"
+    email_welcome: "Welcome to the E-learning! Click on the link below to activate your account:"
