@@ -1,0 +1,14 @@
+en:
+  home:
+    coppyright: "Bản quyền"
+    home: "Trang chủ"
+    welcome: "Chào mừng tới Framgia E-learning"
+    signup: "Đăng kí"
+    login: "Đăng nhập"
+    logout: "Đăng xuất"
+  user:
+    name: "Tên"
+    password: "Mật khẩu"
+    password_cf: "Nhập lại mật khẩu"
+  account:
+    check_email: "Kiểm tra email để hoàn tất đăng kí"
