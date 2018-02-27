@@ -1,5 +1,6 @@
 <h1><%= t "hone.welcome" %></h1>
-<p><%= t("hone.hello", username: @user.name) %>,</p>
 <p>
   <%= t "account.email_welcome" %>
 </p>
+<%= link_to t("account.active"), edit_account_activation_url(@user.activation_token,
+  email: @user.email) %>

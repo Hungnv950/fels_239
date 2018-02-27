@@ -9,6 +9,13 @@ $border-color: #bbb;
   box-sizing: border-box;
 }
 
+body {
+  color: #3e4d5c;
+  direction: ltr;
+  font: 400 14px 'Open Sans', Arial, sans-serif;
+  background: #f9f9f9;
+}
+
 section {
   overflow: auto;
 }
@@ -59,6 +66,20 @@ input, textarea, select, .uneditable-input {
   width: 100%;
   margin-bottom: 15px;
   @include box_sizing;
+}
+
+.checkbox {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
 }
 
 .footer {
