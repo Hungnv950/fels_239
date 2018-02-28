@@ -21,6 +21,13 @@ en:
     help: "Giúp đỡ"
     dont_have_activities: "Bạn chưa có hoạt động nào"
     profile: "Trang cá nhân"
+    update: "Cập nhật"
+    update_complete: "Cập nhật thành công"
+    update_failed: "Cập nhật thất bại"
+    confirm_delete: "Bạn chắc chắn ?"
+    destroy: "Xóa người dùng"
+    deleted: "Xóa thành công"
+    dont_have_permission: "Bạn không có quyền này!"
   account:
     check_email: "Kiểm tra email để hoàn tất đăng kí"
     active: "Kích hoạt tài khoản"

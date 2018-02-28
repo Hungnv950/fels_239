@@ -2,3 +2,5 @@ user:
   name: 20
   email: 80
   password: 120
+  avatar_medium: "200x200>"
+  avatar_header: "100x100>"

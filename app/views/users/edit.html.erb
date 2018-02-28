@@ -1,0 +1,29 @@
+<% provide :title, t("user.update") %>
+<% provide :submit, t("user.update") %>
+
+<div class="container">
+  <div class="row profile">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="profile-sidebar">
+        <%= form_for @user, html: { multipart: true } do |f| %>
+          <div class="field profile-userpic">
+            <% if @user.avatar? %>
+              <%= image_tag @user.avatar.url(:medium), class: "img-responsive"  %>
+            <% else %>
+              <img src="<%= image_url("user.png") %>" class="img-responsive" alt="">
+            <% end %>
+            <%= f.file_field :avatar %>
+          </div>
+          <br>
+          <%= f.label :name, t("user.name") %>
+          <%= f.text_field :name, class: "form-control" %>
+          <%= f.label :email, t("email") %>
+          <%= f.email_field :email, class: "form-control" %>
+          <%= f.submit yield(:submit) ,class: "btn btn-primary col-md-4"%>
+          <%= link_to t("user.destroy"), user_path(@user), method: :delete,data: {confirm: t("user.confirm_delete")}, class: "btn btn-danger col-md-offset-4 col-md-4" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -4,7 +4,11 @@
       <div class="profile-sidebar">
 
         <div class="profile-userpic">
-          <img src="<%= image_url("user.png") %>" class="img-responsive" alt="">
+          <% if @user.avatar? %>
+            <%= image_tag @user.avatar.url(:medium), class: "img-responsive"  %>
+          <% else %>
+            <img src="<%= image_url("user.png") %>" class="img-responsive" alt="">
+          <% end %>
         </div>
 
         <div class="profile-usertitle">
@@ -14,40 +18,43 @@
         </div>
 
         <div class="profile-userbuttons">
-          <button type="button" class="btn btn-success btn-sm">
-            <%= t "user.follow" %>
-          </button>
+          <%= render "follow_form" if logged_in? %>
+        </div>
+        <br>
+        <div class="row center">
+          <%= render "shared/stats" %>
         </div>
 
-        <div class="profile-usermenu">
-          <ul class="nav">
-            <li class="active">
-              <a href="#">
-                <i class="glyphicon glyphicon-home"></i>
-                <%= t "user.overview" %>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="glyphicon glyphicon-user"></i>
-                <%= t "user.setting" %>
-              </a>
-            </li>
-            <li>
-              <a href="#" target="_blank">
-                <i class="glyphicon glyphicon-ok"></i>
-                <%= t "user.task" %>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="glyphicon glyphicon-flag"></i>
-                <%= t "user.help" %>
-              </a>
-            </li>
-          </ul>
-        </div>
-
+        <% if owner? @user %>
+          <div class="profile-usermenu">
+            <ul class="nav">
+              <li class="active">
+                <a href="#">
+                  <i class="glyphicon glyphicon-home"></i>
+                  <%= t "user.overview" %>
+                </a>
+              </li>
+              <li>
+                <%= link_to edit_user_path(current_user) do %>
+                  <i class="glyphicon glyphicon-user"></i>
+                  <%= t "user.setting" %>
+                <% end %>
+              </li>
+              <li>
+                <a href="#" target="_blank">
+                  <i class="glyphicon glyphicon-ok"></i>
+                  <%= t "user.task" %>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="glyphicon glyphicon-flag"></i>
+                  <%= t "user.help" %>
+                </a>
+              </li>
+            </ul>
+          </div>
+        <% end %>
       </div>
     </div>
     <div class="col-md-9">
