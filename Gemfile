@@ -5,9 +5,13 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem "bcrypt", "~> 3.1", ">= 3.1.11"
 gem "bootstrap-sass", "~> 3.3", ">= 3.3.7"
 gem "coffee-rails", "~> 4.2"
+gem "config", "~> 1.7"
+gem "figaro", "~> 1.1", ">= 1.1.1"
 gem "jbuilder", "~> 2.5"
+gem "jquery-rails", "~> 4.3", ">= 4.3.1"
 gem "puma", "~> 3.7"
 gem "rails", "~> 5.1.5"
 gem "rails-i18n"
