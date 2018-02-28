@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  before_action :load_user, except: [:index, :new, :create]
+  before_action :load_user, except: [:destroy, :new, :create]
 
   def new; end
 
