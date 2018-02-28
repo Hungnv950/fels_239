@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:edit, :update, :destroy]
-  before_action :load_user, only: [:show, :index]
+  before_action :load_user, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: :destroy
 
   def index; end
 
@@ -10,7 +11,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new user_params
-    @user.avatar = "user.png"
     if @user.save
       UserMailer.account_activation(@user).deliver_now
       flash[:success] = t "account.check_email"
@@ -20,7 +20,33 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit; end
+
+  def update
+    if @user.update_attributes user_params
+      flash[:success] = t "user.update_complete"
+      redirect_to @user
+    else
+      flash[:danger] = t "user.update_failed"
+      render :edit
+    end
+  end
+
+  def destroy
+    if @user.destroy
+      flash[:success] = t "user.deleted"
+      redirect_to root_url
+    end
+  end
+
   private
+
+  def correct_user
+    unless owner?(@user) || current_user.is_admin?
+      flash[:danger] = t "user.dont_have_permission"
+      redirect_to root_url
+    end
+  end
 
   def load_user
     return if @user = User.find_by(id: params[:id])
@@ -30,7 +56,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit :name, :email, :password,
-      :password_confirmation
+      :password_confirmation, :avatar
   end
 
   def logged_in_user
