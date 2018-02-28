@@ -13,22 +13,22 @@
 ActiveRecord::Schema.define(version: 20180227022946) do
 
   create_table "activities", force: :cascade do |t|
-    t.integer "user_id_id"
+    t.integer "user_id"
     t.integer "target_id"
     t.string "action_type"
     t.string "integer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id_id"], name: "index_activities_on_user_id_id"
+    t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
   create_table "answers", force: :cascade do |t|
-    t.integer "word_id_id"
+    t.integer "word_id"
     t.boolean "is_correct"
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["word_id_id"], name: "index_answers_on_word_id_id"
+    t.index ["word_id"], name: "index_answers_on_word_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -38,13 +38,13 @@ ActiveRecord::Schema.define(version: 20180227022946) do
   end
 
   create_table "lessons", force: :cascade do |t|
-    t.integer "user_id_id"
+    t.integer "user_id"
     t.integer "category_id_id"
     t.boolean "is_finished"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id_id"], name: "index_lessons_on_category_id_id"
-    t.index ["user_id_id"], name: "index_lessons_on_user_id_id"
+    t.index ["user_id"], name: "index_lessons_on_user_id"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -58,14 +58,14 @@ ActiveRecord::Schema.define(version: 20180227022946) do
   end
 
   create_table "results", force: :cascade do |t|
-    t.integer "word_id_id"
-    t.integer "lesson_id_id"
-    t.integer "answer_id_id"
+    t.integer "word_id"
+    t.integer "lesson_id"
+    t.integer "answer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["answer_id_id"], name: "index_results_on_answer_id_id"
-    t.index ["lesson_id_id"], name: "index_results_on_lesson_id_id"
-    t.index ["word_id_id"], name: "index_results_on_word_id_id"
+    t.index ["answer_id"], name: "index_results_on_answer_id"
+    t.index ["lesson_id"], name: "index_results_on_lesson_id"
+    t.index ["word_id"], name: "index_results_on_word_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -86,11 +86,11 @@ ActiveRecord::Schema.define(version: 20180227022946) do
   end
 
   create_table "words", force: :cascade do |t|
-    t.integer "category_id_id"
+    t.integer "category_id"
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["category_id_id"], name: "index_words_on_category_id_id"
+    t.index ["category_id"], name: "index_words_on_category_id"
   end
 
 end
