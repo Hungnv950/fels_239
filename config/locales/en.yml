@@ -1,4 +1,5 @@
 en:
+  search: "Search"
   home:
     coppyright: "Copyright"
     home: "Home"
@@ -39,3 +40,20 @@ en:
     remember_me: "Remember me"
     link_failed: "Link failed"
     not_actived: "Account not actived"
+  category:
+    name: "Name"
+    update: "Update category"
+    delete: "Delete category"
+    all: "List categories"
+    action: "Action"
+    create: "Create Category"
+    edit: "Edit category"
+    index: "Index"
+    total: "Total"
+    nil: "Don't have any Category"
+    create: "Create New Category"
+    created: "Create successfull"
+    create_failed: "Create failed"
+    category: "Category"
+  word:
+    words: "Words"

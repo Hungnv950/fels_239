@@ -1,4 +1,5 @@
 en:
+  search: "Tìm kiếm"
   home:
     coppyright: "Bản quyền"
     home: "Trang chủ"
@@ -37,3 +38,22 @@ en:
     remember_me: "Ghi nhớ đăng nhập"
     link_failed: "Đường dẫn sai"
     not_actived: "Tài khoản chưa được kích hoạt"
+  category:
+    category: "Danh mục"
+    name: "Tên"
+    update: "Cập nhật danh mục"
+    delete: "Xóa danh mục"
+    all: "Danh sách danh mục"
+    action: "Hành động"
+    create: "Tạo danh mục"
+    edit: "Sửa"
+    index: "Stt"
+    total: "Tổng số"
+    nil: "Không có bản ghi nào"
+    create: "Tạo danh mục"
+    created: "Tạo thành công"
+    create_failed: "Tạo thất bại"
+    category: "Danh mục"
+  word:
+    words: "Câu hỏi"
+
