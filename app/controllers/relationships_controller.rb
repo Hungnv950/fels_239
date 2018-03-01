@@ -4,8 +4,8 @@ class RelationshipsController < ApplicationController
   def create
     @user = User.find_by id: params[:followed_id]
     current_user.follow @user
-    @user_following = current_user.active_relationships.find_by
-      followed_id: @user.id
+    @user_following = current_user.active_relationships.find_by(
+      followed_id: @user.id)
     respond_to do |format|
       format.html { redirect_to @user }
       format.js
