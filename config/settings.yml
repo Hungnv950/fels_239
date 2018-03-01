@@ -4,3 +4,5 @@ user:
   password: 120
   avatar_medium: "200x200>"
   avatar_header: "100x100>"
+category:
+  per_page: 10
