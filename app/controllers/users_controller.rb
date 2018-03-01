@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:edit, :update, :destroy]
   before_action :load_user, only: [:show, :edit, :update, :destroy]
-  before_action :correct_user, only: :destroy
+  before_action :correct_user, only: [:destroy,:update, :edit]
+  before_action :user_follow, only: [:show]
 
   def index; end
 
@@ -19,6 +20,8 @@ class UsersController < ApplicationController
       render :new
     end
   end
+
+  def show; end
 
   def edit; end
 
@@ -64,5 +67,11 @@ class UsersController < ApplicationController
     store_location
     flash[:danger] = t "user.please_login"
     redirect_to login_url
+  end
+
+  def user_follow
+    @user_follower = current_user.active_relationships.build
+    @user_following = current_user.active_relationships.find_by
+      followed_id: @user.id
   end
 end

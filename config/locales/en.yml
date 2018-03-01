@@ -28,6 +28,8 @@ en:
     destroy: "Delete User"
     deleted: "User deleted"
     dont_have_permission: "You don't have permission!"
+    following: "Đang theo dõi"
+    follower: "Theo dõi"
   account:
     check_email: "Check your email for the activation link."
     active: "Account activation"
