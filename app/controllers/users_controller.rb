@@ -71,7 +71,7 @@ class UsersController < ApplicationController
 
   def user_follow
     @user_follower = current_user.active_relationships.build
-    @user_following = current_user.active_relationships.find_by
-      followed_id: @user.id
+    @user_following = current_user.active_relationships.find_by(
+      followed_id: @user.id)
   end
 end

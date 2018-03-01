@@ -1,0 +1,11 @@
+<% if @category.errors.any? %>
+  <% @category.errors.full_messages.each do |message| %>
+    $("#notifi").html('<div class="alert \
+      alert-danger"><%= t "category.create_failed" %></div>')
+  <% end %>
+<% else %>
+  $("#notifi").html('<div class="alert \
+    alert-success"><%= t "category.created" %></div>')
+  $('#tbody').html("");
+  $('#tbody').append('<%= j render "category" %>');
+<% end %>

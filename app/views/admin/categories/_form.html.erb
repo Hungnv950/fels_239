@@ -1,0 +1,6 @@
+<%= form_for @category, url: admin_categories_path,
+  method: :post, remote: true do |f| %>
+  <%= f.label :name, t("category.name")  %>
+  <%= f.text_field :name, class: "form-control" %>
+  <%= f.submit yield(:create) ,class: "btn btn-primary" %>
+<% end %>
