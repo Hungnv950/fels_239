@@ -8,14 +8,17 @@
       <td><%= category.name %></td>
       <td><%= category.words.size %></td>
       <td class="col-md-3 center">
-        <span data-placement="top" data-toggle="tooltip"
-          title="<%= t "category.edit" %>">
-          <button class="btn btn-primary btn-xs"
-            data-title="<%= t "category.edit" %>"
-            data-toggle="modal" data-target="#edit" >
-            <span class="glyphicon glyphicon-pencil"></span>
-          </button>
-        </span>
+        <a data-toggle="modal" data-target="#myModal"
+          data-remote="<%= edit_admin_category_path(category) %> #modal-edit-fields" class="btn btn-mini">
+          <span data-placement="top" data-toggle="tooltip"
+            title="<%= t "category.edit" %>">
+            <button class="btn btn-primary btn-xs"
+              data-title="<%= t "category.edit" %>"
+              data-toggle="modal" data-target="#edit" >
+              <span class="glyphicon glyphicon-pencil"></span>
+            </button>
+          </span>
+        </a>
         <span data-placement="top" data-toggle="tooltip"
           title="<%= t "category.delete" %>">
           <button class="btn btn-danger btn-xs"
