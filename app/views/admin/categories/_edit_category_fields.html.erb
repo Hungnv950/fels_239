@@ -1,0 +1,19 @@
+<div class="modal-body" id="modal-edit-fields">
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default"
+      data-dismiss="modal">Close</button>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <%= t "category.update" %></div>
+    <div class="panel-body">
+      <div id="notifi"></div>
+        <%= form_for @category, url: admin_category_path,
+          method: :put, remote: true do |f| %>
+        <%= f.label :name, t("category.name")  %>
+        <%= f.text_field :name, class: "form-control" %>
+        <%= f.submit t("category.update"),class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
