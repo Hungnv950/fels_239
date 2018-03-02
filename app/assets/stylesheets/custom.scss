@@ -77,6 +77,11 @@ input, textarea, select, .uneditable-input {
   }
 }
 
+.input[type="radio"], input[type="checkbox"] {
+    margin: 13px 0 0;
+    line-height: normal;
+}
+
 #session_remember_me {
   width: auto;
   margin-left: 0;
@@ -102,6 +107,11 @@ input, textarea, select, .uneditable-input {
 .navbar-nav li a {
   line-height: 32px;
 }
+
+.search_category {
+  float: right;
+}
+
 .footer {
   position: fixed;
   bottom: 0;

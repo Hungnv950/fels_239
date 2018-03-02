@@ -8,22 +8,32 @@
       <td><%= category.name %></td>
       <td><%= category.words.size %></td>
       <td class="col-md-3 center">
-        <span data-placement="top" data-toggle="tooltip"
-          title="<%= t "category.edit" %>">
-          <button class="btn btn-primary btn-xs"
-            data-title="<%= t "category.edit" %>"
-            data-toggle="modal" data-target="#edit" >
-            <span class="glyphicon glyphicon-pencil"></span>
-          </button>
-        </span>
-        <span data-placement="top" data-toggle="tooltip"
-          title="<%= t "category.delete" %>">
-          <button class="btn btn-danger btn-xs"
-            data-title="<%= t "category.delete" %>"
-            data-toggle="modal" data-target="#delete" >
-            <span class="glyphicon glyphicon-trash"></span>
-          </button>
-        </span>
+        <a data-toggle="modal" data-target="#myModal"
+          data-remote="<%= edit_admin_category_path(category) %> #modal-edit-fields" class="btn btn-mini">
+          <span data-placement="top" data-toggle="tooltip"
+            title="<%= t "category.edit" %>">
+            <button class="btn btn-primary btn-xs"
+              data-title="<%= t "category.edit" %>"
+              data-toggle="modal" data-target="#edit" >
+              <span class="glyphicon glyphicon-pencil"></span>
+            </button>
+          </span>
+        </a>
+        <%= link_to admin_category_url(category), remote:true,
+          method: :delete,data: {confirm:
+            t("user.confirm_delete")} do %>
+          <span data-placement="top" data-toggle="tooltip"
+            title="<%= t "category.delete" %>">
+            <button class="btn btn-danger btn-xs"
+              data-title="<%= t "category.delete" %>"
+              data-toggle="modal" data-target="#delete" >
+              <span class="glyphicon glyphicon-trash"></span>
+            </button>
+          </span>
+        <% end %>
+      </td>
+      <td><%= check_box_tag "category_ids", category.id, false,
+        id: "#{category.id}" %>
       </td>
     </tr>
     <% i = i + 1 %>

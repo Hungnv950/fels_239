@@ -1,22 +1,28 @@
-<% provide :title, t("category.category") %>
+<div id="notification"></div>
 <% provide :create, t("category.create") %>
 <div class="row">
   <div class="col-md-12">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3><%= t "category.all" %> (<%= t "category.total" %> :
-          <%= @categories.size %>)</h3>
-        <form class="navbar-form" role="search">
-          <div class="input-group">
-            <input type="text" class="form-control"
-            placeholder="<%= t "search" %>" name="search">
-            <div class="input-group-btn">
-              <button class="btn btn-default" type="submit">
-                <i class="glyphicon glyphicon-search"></i>
-              </button>
-            </div>
+        <div class="row">
+          <div class="col-md-6">
+            <h3><%= t "category.all" %> (<%= t "category.total" %> :
+            <%= @categories.size %>)</h3>
           </div>
-        </form>
+          <div class="col-md-6">
+            <form class="navbar-form search_category" role="search">
+              <div class="input-group">
+                <input type="text" class="form-control"
+                placeholder="<%= t "search" %>" name="search">
+                <div class="input-group-btn">
+                  <button class="btn btn-default" type="submit">
+                    <i class="glyphicon glyphicon-search"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
 
         <div>
           <button type="button" class="btn btn-info btn-sm"
@@ -48,7 +54,6 @@
             </div>
           </div>
         </div>
-
       </div>
       <div class="panel-body">
         <table class="table table-bordered table-hover
@@ -60,6 +65,17 @@
               <th class="center col-md-1"><%= t "word.words" %></th>
               <th class="center col-md-1">
                 <%= t "category.action" %>
+              </th>
+              <th>
+                <span data-placement="top" data-toggle="tooltip"
+                  id = "delete_all_category"
+                  title="<%= t "category.delete_all" %>">
+                  <button class="btn btn-danger btn-xs"
+                    data-title="<%= t "category.delete_all" %>"
+                    data-toggle="modal" data-target="#delete_all" >
+                    <span class="glyphicon glyphicon-trash"></span>
+                  </button>
+                </span>
               </th>
             </tr>
           </thead>
@@ -74,22 +90,32 @@
                   <td><%= category.name %></td>
                   <td><%= category.words.size %></td>
                   <td class="col-md-3 center">
-                    <span data-placement="top" data-toggle="tooltip"
-                      title="<%= t "category.edit" %>">
-                      <button class="btn btn-primary btn-xs"
-                        data-title="<%= t "category.edit" %>"
-                        data-toggle="modal" data-target="#edit" >
-                        <span class="glyphicon glyphicon-pencil"></span>
-                      </button>
-                    </span>
-                    <span data-placement="top" data-toggle="tooltip"
-                      title="<%= t "category.delete" %>">
-                      <button class="btn btn-danger btn-xs"
-                        data-title="<%= t "category.delete" %>"
-                        data-toggle="modal" data-target="#delete" >
-                        <span class="glyphicon glyphicon-trash"></span>
-                      </button>
-                    </span>
+                    <a data-toggle="modal" data-target="#myModal"
+                      data-remote="<%= edit_admin_category_path(category) %> #modal-edit-fields" class="btn btn-mini">
+                      <span data-placement="top" data-toggle="tooltip"
+                        title="<%= t "category.edit" %>">
+                        <button class="btn btn-primary btn-xs"
+                          data-title="<%= t "category.edit" %>"
+                          data-toggle="modal" data-target="#edit" >
+                          <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                      </span>
+                    </a>
+                    <%= link_to admin_category_url(category), remote:true,
+                      method: :delete,data: {confirm:
+                        t("user.confirm_delete")} do %>
+                      <span data-placement="top" data-toggle="tooltip"
+                        title="<%= t "category.delete" %>">
+                        <button class="btn btn-danger btn-xs"
+                          data-title="<%= t "category.delete" %>"
+                          data-toggle="modal" data-target="#delete" >
+                          <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+                      </span>
+                    <% end %>
+                  </td>
+                  <td><%= check_box_tag "category_ids", category.id, false,
+                    id: "#{category.id}" %>
                   </td>
                 </tr>
                 <% i = i + 1 %>

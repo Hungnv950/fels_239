@@ -1,4 +1,4 @@
-en:
+vi:
   search: "Tìm kiếm"
   home:
     coppyright: "Bản quyền"
@@ -54,6 +54,9 @@ en:
     created: "Tạo thành công"
     create_failed: "Tạo thất bại"
     category: "Danh mục"
+    not_found: "Không tìm thấy Danh mục"
+    delete_all: "Xóa mục đã chọn"
+    confirm: "Bạn chắc chắn?"
   word:
     words: "Câu hỏi"
 
