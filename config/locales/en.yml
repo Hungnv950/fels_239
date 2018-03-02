@@ -51,5 +51,9 @@ en:
     index: "Index"
     total: "Total"
     nil: "Don't have any Category"
+    create: "Create New Category"
+    created: "Create successfull"
+    create_failed: "Create failed"
+    category: "Category"
   word:
     words: "Words"

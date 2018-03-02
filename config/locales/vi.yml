@@ -50,6 +50,10 @@ en:
     index: "Stt"
     total: "Tổng số"
     nil: "Không có bản ghi nào"
+    create: "Tạo danh mục"
+    created: "Tạo thành công"
+    create_failed: "Tạo thất bại"
+    category: "Danh mục"
   word:
     words: "Câu hỏi"
 
