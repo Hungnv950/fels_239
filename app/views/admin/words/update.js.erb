@@ -1,0 +1,13 @@
+<% if @word.errors.any? %>
+  <% @word.errors.full_messages.each do |message| %>
+    $("#notifi").html('<div class="alert \
+      alert-danger"><%= t "word.update_failed" %></div>')
+    $('#tbody').html("");
+    $('#tbody').append('<%= j render "index" %>');
+  <% end %>
+<% else %>
+  $("#notifi").html('<div class="alert \
+    alert-success"><%= t "word.updated" %></div>')
+  $('#tbody').html("");
+  $('#tbody').append('<%= j render "index" %>');
+<% end %>

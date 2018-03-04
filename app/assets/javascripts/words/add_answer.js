@@ -1,15 +1,16 @@
 $(document).ready(function(){
-  var count_answer = parseInt($('#count_answer').val());
-  $('#duplicate_nested_form').click(function() {
+  $('body').on('click', '#duplicate_nested_form', function() {
+    var count_answer = count_answer_input();
     count_answer = count_answer + 1;
     if(count_answer < 6) {
       $('input#count_answer').val(count_answer + 1);
       $('#table-form').append(
         '<tr class="center">\
             <td>\
-              <input class="form-control answer_unique" type="text"\
-                name="word[answers_attributes]['+ count_answer +'][content]"\
-                 id="word_answers_attributes_'+ count_answer +'_content" />\
+              <input class="form-control answer_unique input_answer"\
+                type="text"\
+                  name="word[answers_attributes]['+ count_answer +'][content]"\
+                    id="word_answers_attributes_'+ count_answer +'_content" />\
             </td>\
             <td>\
               <input name="word[answers_attributes]['+ count_answer +'][is_correct]"\
@@ -30,13 +31,38 @@ $(document).ready(function(){
     }
   });
 
+  var count_save = 2;
+  var id_answer;
   $('body').on('click', '.remove_answer', function() {
-    var remove_answer_id = this.id;
+    validate_checkbox();
+    validate_answer();
+    var total_answer = count_answer_input();
+    if(total_answer <= count_save) {
+      alert(I18n.t("word.min"));
+      return;
+    }
     event.preventDefault();
+    id_answer = $(this).parents('tr').next('input').attr('value');
+    if(id_answer) {
+      confirm(I18n.t("category.confirm"));
+      if(confirm) {
+        $.ajax({
+          url: '/admin/answers/destroy',
+          type: 'DELETE',
+          dataType: 'jsonp',
+          data: {
+            'id_answer': id_answer
+          },
+          success: function(){
+          }
+        });
+      }
+    }
+    $(this).parents('tr').next('input').remove();
     $(this).parents('tr').remove();
   });
 
-  $('#create_word').click(function(){
+  $('body').on('click', '#create_word', function(){
     validate_checkbox();
     validate_answer();
   });
@@ -50,8 +76,8 @@ $(document).ready(function(){
           event.preventDefault();
           return false;
         }
-      if (jQuery.inArray(input.val(), arr_words)!='-1') {
-        alert(input.val() +" "+ I18n.t("word.exits"));
+      if(jQuery.inArray(input.val(), arr_words)!='-1') {
+        alert(input.val() +' '+ I18n.t("word.exits"));
         event.preventDefault();
         return false;
       }
@@ -69,5 +95,9 @@ $(document).ready(function(){
       event.preventDefault();
       return false;
     }
+  }
+
+  function count_answer_input(){
+    return parseInt($('#table-form input[type="checkbox"]').length);
   }
 });

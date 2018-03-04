@@ -1,11 +1,9 @@
 <% if @word.errors.any? %>
   <% @word.errors.full_messages.each do |message| %>
-    $('#notification').append('<div class="alert \
-      alert-danger"><%= t "word.delete_failed" %></div>')
+    alert('I18n.t(word.delete_failed)');
   <% end %>
 <% else %>
-  $('#notification').html('<div class="alert \
-    alert-success"><%= t "word.deleted" %></div>')
+alert(I18n.t("word.deleted"))
   $('#tbody').html("");
   $('#tbody').append('<%= j render "index" %>');
 <% end %>
