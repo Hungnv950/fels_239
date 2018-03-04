@@ -1,0 +1,47 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <%= yield(:create) %>
+  </div>
+  <div class="panel-body">
+    <div id="notifi"></div>
+    <%= form_for @word, url: admin_words_path,
+      method: :post, remote: true do |f| %>
+    <%= f.label :content, t("word.content")  %>
+    <%= f.text_area :content, class: "form-control" %>
+    <%= f.label :category, t("word.category")  %>
+    <%= f.collection_select(:category_id,
+      @categories_search, :id, :name, class: "dropdown-menu")%>
+    <%= f.label :answers, t("word.answers") %>
+    <span class="btn glyphicon glyphicon-plus"
+      id="duplicate_nested_form"></span></span>
+    <table class="table table-hover table-condensed table-stripe">
+      <thead>
+        <tr>
+          <th class="center col-md-9"><%= t "answer.content" %></th>
+          <th class="center col-md-1"><%= t "answer.is_correct" %></th>
+          <th class="center col-md-1"><%= t "answer.action" %></th>
+        </tr>
+      </thead>
+      <tbody id="table-form">
+        <input id="count_answer" value=1 type ="hidden" />
+        <%= f.fields_for :answers do |answers| %>
+          <tr class="center">
+            <td>
+              <%= answers.text_field :content,
+                class: "form-control answer_unique"%>
+            </td>
+            <td>
+              <%= answers.check_box :is_correct %>
+            </td>
+            <td>
+              <span class="btn red glyphicon glyphicon-ban-circle"
+                id=remove_answer0></span>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= f.submit yield(:create) ,class: "btn btn-primary", id: "create_word"%>
+    <% end %>
+  </div>
+</div>

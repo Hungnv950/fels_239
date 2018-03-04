@@ -1,7 +1,9 @@
 <tr>
-  <td class="center"><%= i %></td>
-  <td class="center"><%= word.content %></td>
-  <td class="center"><%= word.answers.size %></td>
+  <td class="center"><%= i + page_index %></td>
+  <td><%= word.content %></td>
+  <td>
+    <%= render word.answers %>
+  </td>
   <td class="center"><%= word.category.name %></td>
   <td class="col-md-3 center">
     <a data-toggle="modal" data-target="#myModal"

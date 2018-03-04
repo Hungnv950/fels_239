@@ -112,6 +112,14 @@ input, textarea, select, .uneditable-input {
   float: right;
 }
 
+.answer {
+  list-style-type: upper-alpha;
+}
+
+.red {
+  color: red;
+}
+
 .footer {
   position: fixed;
   bottom: 0;

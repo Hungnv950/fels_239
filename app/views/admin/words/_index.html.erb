@@ -1,0 +1,3 @@
+<% @words.each_with_index do |word, i| %>
+  <%= render partial: "word", locals: {word: word, i: i} %>
+<% end %>

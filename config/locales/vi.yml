@@ -76,4 +76,7 @@ vi:
     delete_all: "Xóa hết"
     answers: "Trả lời"
     category: "Danh mục"
-
+    max: "Số lượng câu trả lời phải bé hơn 6"
+    exits: "đã tồn tại"
+    checkbox: "Phải có một đáp án đúng và một đáp án sai"
+    present: "Dap an khong duoc de trong"
