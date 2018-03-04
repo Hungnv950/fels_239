@@ -28,6 +28,26 @@ class Admin::WordsController < AdminController
     end
   end
 
+  def destroy
+    if params.has_key?(:id) && !params.has_key?(:word_ids)
+      return unless @word = Word.find_by(id: params[:id])
+      @word.destroy
+    end
+    if params.has_key?(:word_ids)
+      @words = Word.where id: params[:word_ids]
+      return if @words.size < 1
+      @words.destroy_all
+    end
+    @words = Word.search_scope(params[:search], params[:category])
+      .includes(:answers, :category)
+        .order_default.page params[:page]
+    @word = Word.new
+    respond_to do |format|
+      format.html {redirect_to @words}
+      format.js
+    end
+  end
+
   private
 
   def load_words
@@ -43,9 +63,5 @@ class Admin::WordsController < AdminController
   def word_params
     params.require(:word).permit :content, :category_id,
       answers_attributes: [:id, :is_correct, :content]
-  end
-
-  def validater words
-
   end
 end

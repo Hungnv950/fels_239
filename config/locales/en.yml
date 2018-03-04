@@ -81,3 +81,5 @@ en:
     exits: ", answer mustn't loop"
     checkbox: "Must be at least a correct answer and a wrong answer"
     present: "Answer must be present"
+    deleted: "Word deleted"
+    deleted_failed: "Word delete failed"
