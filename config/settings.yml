@@ -6,3 +6,5 @@ user:
   avatar_header: "100x100>"
 category:
   per_page: 10
+word:
+  per_page: 10

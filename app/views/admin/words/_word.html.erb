@@ -1,0 +1,35 @@
+<tr>
+  <td class="center"><%= i %></td>
+  <td class="center"><%= word.content %></td>
+  <td class="center"><%= word.answers.size %></td>
+  <td class="center"><%= word.category.name %></td>
+  <td class="col-md-3 center">
+    <a data-toggle="modal" data-target="#myModal"
+      data-remote="<%= edit_admin_word_path(word) %>
+        #modal-edit-fields" class="btn btn-mini">
+      <span data-placement="top" data-toggle="tooltip"
+        title="<%= t "word.edit" %>">
+        <button class="btn btn-primary btn-xs"
+          data-title="<%= t "word.edit" %>"
+          data-toggle="modal" data-target="#edit" >
+          <span class="glyphicon glyphicon-pencil"></span>
+        </button>
+      </span>
+    </a>
+    <%= link_to admin_word_url(word), remote:true,
+      method: :delete,data: {confirm:
+        t("user.confirm_delete")} do %>
+      <span data-placement="top" data-toggle="tooltip"
+        title="<%= t "word.delete" %>">
+        <button class="btn btn-danger btn-xs"
+          data-title="<%= t "word.delete" %>"
+          data-toggle="modal" data-target="#delete" >
+          <span class="glyphicon glyphicon-trash"></span>
+        </button>
+      </span>
+    <% end %>
+  </td>
+  <td><%= check_box_tag "word_ids", word.id, false,
+    id: "#{word.id}" %>
+  </td>
+</tr>

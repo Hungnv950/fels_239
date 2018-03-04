@@ -5,9 +5,8 @@ class Category < ApplicationRecord
   has_many :lessons
 
   paginates_per Settings.category.per_page
-  scope :order_default, -> {order(created_at: :DESC)}
-
-  def self.search search
-    where "name LIKE ?", "%#{search}%"
-  end
+  scope :order_default, -> {order created_at: :DESC}
+  scope :search, (lambda do |query|
+    where('name like :query', query: "%#{query}%")
+  end)
 end
