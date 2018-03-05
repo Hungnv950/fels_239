@@ -19,14 +19,21 @@
             </button>
           </span>
         </a>
-        <span data-placement="top" data-toggle="tooltip"
-          title="<%= t "category.delete" %>">
-          <button class="btn btn-danger btn-xs"
-            data-title="<%= t "category.delete" %>"
-            data-toggle="modal" data-target="#delete" >
-            <span class="glyphicon glyphicon-trash"></span>
-          </button>
-        </span>
+        <%= link_to admin_category_url(category), remote:true,
+          method: :delete,data: {confirm:
+            t("user.confirm_delete")} do %>
+          <span data-placement="top" data-toggle="tooltip"
+            title="<%= t "category.delete" %>">
+            <button class="btn btn-danger btn-xs"
+              data-title="<%= t "category.delete" %>"
+              data-toggle="modal" data-target="#delete" >
+              <span class="glyphicon glyphicon-trash"></span>
+            </button>
+          </span>
+        <% end %>
+      </td>
+      <td><%= check_box_tag "category_ids", category.id, false,
+        id: "#{category.id}" %>
       </td>
     </tr>
     <% i = i + 1 %>

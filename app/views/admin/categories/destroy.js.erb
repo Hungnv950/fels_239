@@ -1,0 +1,7 @@
+$("#notification").html("");
+$("#notification").append('<div class="alert \
+  alert-success"><%= t "category.deleted" %></div>')
+$('#tbody').html("");
+$('#tbody').append('<%= j render "category" %>');
+$('#paginate').html('')
+$('#paginate').append('<%= j paginate(@categories, remote: true).to_s %>')

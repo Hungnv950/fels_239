@@ -56,5 +56,7 @@ en:
     create_failed: "Create failed"
     category: "Category"
     not_found: "Category not found"
+    delete_all: "Delete selected"
+    confirm: "Are you sure?"
   word:
     words: "Words"

@@ -35,4 +35,5 @@ Rails.application.configure do
     :enable_starttls_auto => true
   }
   Paperclip.options[:command_path] = "/usr/local/bin/"
+  config.middleware.use I18n::JS::Middleware
 end
