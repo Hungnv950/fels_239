@@ -37,3 +37,5 @@ User
 [Admin]
 Admin User
 - can manage all data
+
+bundle exec sidekiq -q default -q mailers
