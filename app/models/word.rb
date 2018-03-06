@@ -32,4 +32,6 @@ class Word < ApplicationRecord
       return false
     end
   end
+
+  private
 end

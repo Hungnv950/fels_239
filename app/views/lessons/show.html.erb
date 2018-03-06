@@ -1,0 +1,33 @@
+<div class="col-md-9">
+  <div class="panel-group panel-primary">
+    <div class="panel panel-primary">
+      <h4 class="center"><%= t "category.category" %> :
+        <%= @lesson.category.name %>
+      </h4>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <%= form_for @lesson, url: @lesson do |f| %>
+          <ul class="word_content">
+            <%= render "result", f: f %>
+          </ul>
+          <%= f.hidden_field :is_finished, :value => true %>
+          <td>
+            <% unless @lesson.is_finished? %>
+              <%= f.submit t("lesson.save"),
+              data: {confirm: t("lesson.confirm_finish")},
+                class: "btn btn-primary col-md-5",
+                  id: "save_lesson" %>
+              <%= f.submit t("lesson.finish"),
+                data: {confirm: t("lesson.confirm_finish")},
+                  class: "btn btn-danger col-md-5 col-md-offset-2",
+                    id: "finish_lesson" %>
+            <% end %>
+          </td>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-md-4">
+</div>
