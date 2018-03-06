@@ -62,6 +62,7 @@ en:
     confirm: "Are you sure?"
     view: "View Category"
     show: "words in this category"
+    all_category: "ALL"
   word:
     words: "Words"
     name: "Name"
@@ -88,3 +89,6 @@ en:
     deleted: "Word deleted"
     deleted_failed: "Word delete failed"
     answer: "Answer"
+    all_word: "All words"
+  lesson:
+    start: "Start Lesson"

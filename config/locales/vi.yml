@@ -62,6 +62,7 @@ vi:
     confirm: "Bạn chắc chắn?"
     view: "Xem danh mục"
     show: "từ trong danh mục"
+    all_category: "Tất cả các mục"
   word:
     words: "Từ vựng"
     content: "Nội dung"
@@ -86,3 +87,6 @@ vi:
     checkbox: "Phải có một đáp án đúng và một đáp án sai"
     present: "Đáp án không được để trống"
     answer: "Đáp án"
+    all_word: "Tất cả các từ"
+  lesson:
+    start: "Bắt đầu kiểm tra"

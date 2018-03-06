@@ -12,3 +12,5 @@ word:
 answer:
   size: 20
   MIN_ANSWER_NUMBER: 2
+lesson:
+  words_size: 20
