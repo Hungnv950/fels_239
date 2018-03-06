@@ -7,7 +7,6 @@ class LessonsController < ApplicationController
   def index
     @lessons = Lesson.all
   end
->>>>>>> Create view word list, categories
 
   def show; end
 
