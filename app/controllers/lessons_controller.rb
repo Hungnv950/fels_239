@@ -1,6 +1,11 @@
 class LessonsController < ApplicationController
   before_action :load_lesson, only: [:show, :update]
-  before_action :logged_in_user, except: :show
+  before_action :logged_in_user, except: [:index, :show, :words]
+  after_action :log_update, only: [:create, :update]
+
+  def index
+    @lessons = Lesson.all
+  end
 
   def show; end
 
@@ -10,6 +15,7 @@ class LessonsController < ApplicationController
       @lesson = Lesson.new category_id: category_id, user_id: current_user.id
       if @lesson.save
         flash[:success] = t "lesson.created"
+        ApplicationJob.perform_later current_user, @lesson.id
         redirect_to @lesson
       else
         flash[:success] = t "lesson.create_failed"
@@ -22,6 +28,8 @@ class LessonsController < ApplicationController
     @lesson.update_attributes lesson_params
     if @lesson.is_finished
       flash[:success] = t "lesson.finished"
+      result = "#{@lesson.correct_answers}/#{@lesson.words.size}"
+      UserMailer::result_lesson(current_user, @lesson, result).deliver_later
     else
       flash[:success] = t "lesson.saved"
     end
@@ -46,5 +54,24 @@ class LessonsController < ApplicationController
     store_location
     flash[:danger] = t "lesson.permission"
     redirect_to @lesson
+  end
+
+  def logged_in_user
+    return if logged_in?
+    store_location
+    flash[:danger] = t "user.please_login"
+    redirect_to login_url
+  end
+
+  def log_update
+    if action_name == "index"
+      action_type = 2
+    else
+      action_type = (action_name == "create") ? 3 : 4
+    end
+    target_id = params[:id] ? params[:id] : @lesson.id
+    Activity.create(
+      :user_id => current_user.id,
+        :target_id => target_id, :action_type => action_type)
   end
 end

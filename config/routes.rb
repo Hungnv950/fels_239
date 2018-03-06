@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "categories#index"
+  root "pages#index"
   get "/admin", to: "admin#index"
   get "/signup", to: "users#new"
   post "/signup", to: "users#create"
