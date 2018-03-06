@@ -12,6 +12,8 @@ module Fels239
     config.i18n.load_path += Dir[Rails.root.join("config", "locales", "**", "*.{rb,yml}")]
     config.i18n.available_locales = [:vi, :en]
     config.i18n.default_locale = :en
+    config.autoload_paths = %W(#{config.root}/app)
+    config.autoload_paths << Rails.root.join("services")
     config.active_job.queue_adapter = :sidekiq
   end
 end

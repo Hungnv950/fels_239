@@ -10,6 +10,7 @@ class Admin::CategoriesController < AdminController
   def create
     @category = Category.new category_params
     @category.save
+    UserNotificationService.new(current_user).notify @category.id
     respond_to do |format|
       format.html {redirect_to @categories}
       format.js

@@ -4,11 +4,6 @@ class LessonsController < ApplicationController
   before_action :owner?, only: :update
   after_action :log_update, only: [:create, :update]
 
-  def index
-    @lessons = Lesson.all
-  end
->>>>>>> Create view word list, categories
-
   def show; end
 
   def create
@@ -28,6 +23,7 @@ class LessonsController < ApplicationController
   def update
     @lesson.update_attributes lesson_params
     if @lesson.is_finished
+      result = (@lesson.correct_answers.to_s) +"/"+ (@lesson.words.size.to_s)
       flash[:success] = t "lesson.finished"
       result = "#{@lesson.correct_answers}/#{@lesson.words.size}"
       UserMailer::result_lesson(current_user, @lesson, result).deliver_later
