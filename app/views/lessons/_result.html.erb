@@ -1,0 +1,31 @@
+<%= f.fields_for :results do |results_field| %>
+<%
+  answer_results = results_field.object.answer_id
+  answer_correct = results_field.object.word.answers
+    .where(:answers => {is_correct: true}).ids
+%>
+  <li>
+    <ul class="list-group cword_answers
+      <%= "danger" if(@lesson.is_finished? &&
+        answer_results != answer_correct[0]) %> ">
+      <li class="list-group-item list-group-item-success">
+        <b><%= results_field.object.word.content %></b>
+      </li>
+      <% results_field.object.word.answers.each_with_index do |answer| %>
+        <li class="list-group-item
+          <%= "success" if @lesson.is_finished? && answer.is_correct %>">
+          <div class="row">
+            <span class="col-md-9">
+              <%= answer.content %>
+            </span>
+            <span class="col-md-3">
+              <%= results_field.radio_button :answer_id, answer.id,
+                disabled: results_field.object.answer.present? ||
+                  @lesson.is_finished? %>
+            </span>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </li>
+<% end %>

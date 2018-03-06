@@ -19,3 +19,33 @@ User.create!(
     activated: true,
     activated_at: Time.zone.now)
 end
+
+30.times do |n|
+  name = Faker::Name.name
+  Category.create!(name: name)
+end
+
+10.times do |n|
+  name = Faker::Name.name
+  Word.create!(
+    content: name,
+    category_id: 28,
+    answers_attributes:
+      { 0 =>
+          {
+              content: name,
+              is_correct: true
+          },
+        1 =>
+          {
+              content: name+"AN",
+              is_correct: false
+          },
+        2 =>
+        {
+            content: name+"A",
+            is_correct: false
+        }
+      }
+    )
+end

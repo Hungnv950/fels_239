@@ -62,6 +62,7 @@ en:
     confirm: "Are you sure?"
     view: "View Category"
     show: "words in this category"
+    all_category: "ALL"
   word:
     words: "Words"
     name: "Name"
@@ -94,3 +95,14 @@ en:
     is_correct: "is correct, can not delete"
     add_answer: "Add answer"
     remove_answer: "Remove Answer"
+    all_word: "All words"
+  lesson:
+    start: "Start Lesson"
+    save: "Save"
+    finish: "Finish"
+    confirm_finish: "Finish Lesson ?"
+    confirm_save: "Save Lesson ?"
+    finished: "Lesson finished"
+    saved: "Lesson saved"
+    result: "Result"
+    result_waiting: "Your lession is not compelte"

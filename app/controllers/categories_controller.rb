@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :load_category, only: :show
   before_action :load_words, only: :words
+  before_action :load_category_search, only: [:show, :words]
 
   def index
     @categories = Category.order_default.select(:id, :name)
@@ -21,6 +22,10 @@ class CategoriesController < ApplicationController
     return if @category = Category.find_by(id: params[:id])
     flash[:danger] = t "category.not_found"
     redirect_to root_url
+  end
+
+  def load_category_search
+    @categories_search = Category.select :id, :name
   end
 
   def load_words

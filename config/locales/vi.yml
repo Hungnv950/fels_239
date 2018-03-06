@@ -62,6 +62,7 @@ vi:
     confirm: "Bạn chắc chắn?"
     view: "Xem danh mục"
     show: "từ trong danh mục"
+    all_category: "Tất cả các mục"
   word:
     words: "Từ vựng"
     content: "Nội dung"
@@ -92,3 +93,14 @@ vi:
     is_correct: "Không thể xóa"
     add_answer: "Thêm đáp án"
     remove_answer: "Xóa đáp án"
+    all_word: "Tất cả các từ"
+  lesson:
+    start: "Bắt đầu kiểm tra"
+    save: "Lưu lại"
+    finish: "Ket thuc"
+    confirm_finish: "Kết thúc bài kiểm tra ?"
+    confirm_save: "Lưu bài kiểm tra?"
+    finished: "Bài kiểm tra đã kết thúc"
+    saved: "Bài kiểm tra đã được lưu"
+    result: "Kết quả"
+    result_waiting: "Bài kiểm tra chưa kết thúc"

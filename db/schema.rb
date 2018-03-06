@@ -39,11 +39,11 @@ ActiveRecord::Schema.define(version: 20180228053507) do
 
   create_table "lessons", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "category_id_id"
+    t.integer "category_id"
     t.boolean "is_finished"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["category_id_id"], name: "index_lessons_on_category_id_id"
+    t.index ["category_id"], name: "index_lessons_on_category_id"
     t.index ["user_id"], name: "index_lessons_on_user_id"
   end
 
@@ -71,7 +71,6 @@ ActiveRecord::Schema.define(version: 20180228053507) do
   create_table "users", force: :cascade do |t|
     t.string "email", limit: 80
     t.string "name", limit: 20
-    t.string "avatar"
     t.string "adress", limit: 120
     t.boolean "is_admin", default: false
     t.string "password_digest", limit: 120
