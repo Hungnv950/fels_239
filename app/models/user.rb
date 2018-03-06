@@ -19,6 +19,13 @@ class User < ApplicationRecord
   before_save :downcase_email
   before_save :create_activation_digest
 
+  scope :order_default,-> {order created_at: :DESC}
+  scope :search, (lambda do |name|
+    where("name like :name",  name: "%#{name}%")
+  end)
+
+  paginates_per Settings.user.per_page
+
   class << self
     def digest string
       cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST
