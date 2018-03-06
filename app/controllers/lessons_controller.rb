@@ -1,7 +1,10 @@
 class LessonsController < ApplicationController
   before_action :load_lesson, only: [:show, :update]
+<<<<<<< 75a2f8c38dda41439457377b17d79978a4b7fdbd
   before_action :logged_in_user, except: [:index, :show, :words]
   after_action :log_update, only: [:create, :update]
+=======
+>>>>>>> Create view word list, categories
 
   def index
     @lessons = Lesson.all
@@ -37,12 +40,17 @@ class LessonsController < ApplicationController
 
   def lesson_params
     params.require(:lesson).permit :category_id, :user_id, :is_finished,
+<<<<<<< 75a2f8c38dda41439457377b17d79978a4b7fdbd
       results_attributes: [:id, :answer_id, :word_id]
+=======
+      results_attributes: [:id, :answer_id]
+>>>>>>> Create view word list, categories
   end
 
   def load_lesson
     @lesson = Lesson.find_by id: params[:id]
   end
+<<<<<<< 75a2f8c38dda41439457377b17d79978a4b7fdbd
 
   def logged_in_user
     return if logged_in?
@@ -62,4 +70,6 @@ class LessonsController < ApplicationController
       :user_id => current_user.id,
         :target_id => target_id, :action_type => action_type)
   end
+=======
+>>>>>>> Create view word list, categories
 end
