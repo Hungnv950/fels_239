@@ -102,6 +102,13 @@ vi:
   lesson:
     confirm_finish: "Kết thúc bài kiểm tra ?"
     confirm_save: "Lưu bài kiểm tra?"
+    finished: "Bài kiểm tra đã kết thúc"
+    saved: "Bài kiểm tra đã được lưu"
+    result: "Kết quả"
+    result_waiting: "Bài kiểm tra chưa kết thúc"
+    finished: "Bài kiểm tra đã kết thúc"
+    saved: "Bài kiểm tra đã được lưu"
+    confirm_save: "Lưu bài kiểm tra?"
     finish: "Ket thuc"
     finished: "Bài kiểm tra đã kết thúc"
     result: "Kết quả"
@@ -110,3 +117,4 @@ vi:
     saved: "Bài kiểm tra đã được lưu"
     start: "Bắt đầu kiểm tra"
     permission: "Bạn không có quyền truy cập bài học này"
+    yout_result: "Kết quả bài kiểm tra của bạn: "
