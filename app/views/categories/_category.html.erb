@@ -1,0 +1,20 @@
+<div class="col-lg-3 category">
+  <div class="cuadro_intro_hover">
+    <p>
+      <%= image_tag "category.jpg", class: "img-responsive" %>
+    </p>
+    <div class="caption">
+      <div class="blur"></div>
+      <div class="caption-text">
+        <h3><%= category.name %></h3>
+        <p><%= category.words.size %> words in this category</p>
+         <%= link_to category_path(category),
+          class: "btn btn-default btn-md" do %>
+          <span class="glyphicon glyphicon-plus">
+            <%= t "category.view" %>
+          </span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

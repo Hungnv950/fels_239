@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <p class="col-md-11"> <%= t "word.all" %></p>
+      <%= link_to root_url, clalss: "col-md-1" do %>
+        <span class="btn btn-info">
+          <%= t "lession.start" %>
+        </span>
+      <% end %>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped table-inverse">
+        <thead>
+          <tr class="center" >
+            <th class="center" ><%= t "word.index" %></th>
+            <th class="center" ><%= t "word.words" %></th>
+            <th class="center" ><%= t "word.answer" %></th>
+            <th class="center" ><%= t "word.category" %></th>
+            <th class="center" ><%= t "user.learned" %></th>
+          </tr>
+        </thead>
+        <tbody class="center" >
+          <tbody class="center" >
+          <% @words.each_with_index do |word, i| %>
+            <%= render partial: "word", locals: {word: word, i: i} %>
+          <% end %>
+        </tbody>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

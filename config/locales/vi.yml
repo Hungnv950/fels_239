@@ -29,6 +29,9 @@ vi:
     destroy: "Xóa người dùng"
     deleted: "Xóa thành công"
     dont_have_permission: "Bạn không có quyền này!"
+    following: "Đang theo dõi"
+    follower: "Theo dõi"
+    learned: "Đã học"
   account:
     check_email: "Kiểm tra email để hoàn tất đăng kí"
     active: "Kích hoạt tài khoản"
@@ -57,6 +60,7 @@ vi:
     not_found: "Không tìm thấy Danh mục"
     delete_all: "Xóa mục đã chọn"
     confirm: "Bạn chắc chắn?"
+    view: "Xem danh mục"
   word:
     words: "Từ vựng"
     content: "Nội dung"
@@ -79,4 +83,5 @@ vi:
     max: "Số lượng câu trả lời phải bé hơn 6"
     exits: "đã tồn tại"
     checkbox: "Phải có một đáp án đúng và một đáp án sai"
-    present: "Dap an khong duoc de trong"
+    present: "Đáp án không được để trống"
+    answer: "Đáp án"

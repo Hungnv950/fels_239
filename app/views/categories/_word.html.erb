@@ -1,0 +1,11 @@
+<tr class="center" >
+  <td><%= i %></td>
+  <td><%= word.content %></td>
+  <td>
+    <% word.answers.each do |answer| %>
+      <%= render partial: "answer", locals: {answer: answer, i: i} %>
+    <% end %>
+  </td>
+  <td><%= word.category.name %></td>
+  <td><span class=" glyphicon glyphicon-ok"></span></td>
+</tr>

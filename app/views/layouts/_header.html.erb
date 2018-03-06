@@ -13,6 +13,12 @@
         <li class="active">
           <%= link_to t("home.home"), root_url %>
         </li>
+        <li>
+          <%= link_to t("category.category"), categories_url %>
+        </li>
+        <li>
+          <%= link_to t("word.words"), words_url %>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>

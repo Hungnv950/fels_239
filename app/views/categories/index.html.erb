@@ -1,0 +1,17 @@
+<div class="panel panel-success">
+    <div class="panel-heading">
+      <%= t "word.all" %>
+      <%= link_to root_url do %>
+        <span class="btn btn-info">
+          <%= t "lession.start" %>
+        </span>
+      <% end %>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <% @categories.each_with_index do |category, i| %>
+        <%= render partial: "category", locals: {category: category, i: i} %>
+      <% end %>
+    </div>
+  </div>
+</div>
