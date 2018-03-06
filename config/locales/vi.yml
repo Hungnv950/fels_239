@@ -33,6 +33,10 @@ vi:
     following: "Đang theo dõi"
     follower: "Theo dõi"
     learned: "Đã học"
+    delete: "Xóa người dung"
+    edit: "Sửa người dung"
+    delete_all: "Xoa tat ca"
+    create: "Tạo người dung"
   account:
     check_email: "Kiểm tra email để hoàn tất đăng kí"
     active: "Kích hoạt tài khoản"
@@ -112,3 +116,4 @@ vi:
     saved: "Bài kiểm tra đã được lưu"
     result: "Kết quả"
     result_waiting: "Bài kiểm tra chưa kết thúc"
+    not_found: ""

@@ -1,5 +1,5 @@
-<div id="notification"></div>
 <% provide :create, t("category.create") %>
+<div id="notification"></div>
 <div class="row">
   <div class="col-md-12">
     <div class="panel panel-default">
@@ -27,14 +27,18 @@
         <div>
           <button type="button" class="btn btn-info btn-sm"
           data-toggle="modal" data-target="#myModal">
-          <%= t "category.create" %></button>
+            <span class="glyphicon glyphicon-pencil"></span>
+            <%= t "category.create" %>
+          </button>
           <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog modal-md">
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close"
                   data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title"><%= t "category.create" %></h4>
+                  <h4 class="modal-title">
+                    <%= t "category.create" %>
+                  </h4>
                 </div>
                 <div class="modal-body">
                   <div class="panel panel-default">

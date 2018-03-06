@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     resources :words
     resources :answers, only: :destroy
     resources :users
+    resources :answers, only: :destroy
+    resources :users
   end
   resources :pages
   resources :categories

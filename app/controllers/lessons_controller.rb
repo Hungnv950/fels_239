@@ -41,7 +41,9 @@ class LessonsController < ApplicationController
   end
 
   def load_lesson
-    @lesson = Lesson.find_by id: params[:id]
+    return if @lesson = Lesson.find_by(id: params[:id])
+    flash[:danger] = t "lesson.not_found"
+    redirect_to categories_url
   end
 
   def logged_in_user
