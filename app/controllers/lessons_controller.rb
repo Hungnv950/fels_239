@@ -1,8 +1,12 @@
 class LessonsController < ApplicationController
   before_action :load_lesson, only: [:show, :update]
   before_action :logged_in_user, except: [:index, :show, :words]
-  before_action :owner?, except: [:index, :show, :words]
+  before_action :owner?, only: :update
   after_action :log_update, only: [:create, :update]
+
+  def index
+    @lessons = Lesson.all
+  end
 
   def show; end
 
