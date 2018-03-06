@@ -123,3 +123,8 @@ en:
     lesson: " Lesson "
     finished: "Lesson finished"
     saved: "Lesson saved"
+    confirm_save: "Save Lesson ?"
+    finished: "Lesson finished"
+    saved: "Lesson saved"
+    result: "Result"
+    result_waiting: "Your lession is not compelte"

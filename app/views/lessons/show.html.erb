@@ -33,19 +33,13 @@
   <div class="col-md-3 lesson_result">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <%= t "lesson.progress" %> :
-        <%= @lesson.is_finished? ?
-          t("lesson.finished") : t("lesson.doing") %>
-          <span id="progress_count"> 0</span>/<%= @lesson.words.size %>
+        <%= t "lesson.result" %>
       </div>
       <div class="panel-body">
-        <%= t "lesson.result" %>:
         <%= @lesson.is_finished? ?
           (@lesson.correct_answers.to_s) +"/"+ (@lesson.words.size.to_s)
             : t("lesson.result_waiting") %>
       </div>
     </div>
   </div>
-</div>
-<div class="col-md-4">
 </div>
