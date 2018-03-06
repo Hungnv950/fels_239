@@ -10,4 +10,9 @@ class UserMailer < ApplicationMailer
     @result = result
     mail to: @user.email, subject: t("lesson.is_finised", id: @lesson.id)
   end
+
+  def send_mail_every_months user
+    @user = user
+    mail to: @user.email, subject: "end month"
+  end
 end
