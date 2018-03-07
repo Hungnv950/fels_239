@@ -1,0 +1,124 @@
+$container_bg: #FFF;
+$size_menu_bg: #f8f8f8;
+$side_menu_border_color: #e7e7e7;
+$panel_body_bg: #f3f3f3;
+
+h1.page-header {
+  margin-top: -5px;
+}
+
+.sidebar {
+  padding-left: 0;
+}
+
+.main-container {
+  background: $container_bg;
+  padding-top: 15px;
+  margin-top: 45px;
+}
+
+nav.nav_demo {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.footer {
+  width: 100%;
+}
+
+:focus {
+  outline: none;
+}
+
+.side-menu {
+  position: relative;
+  height: 100%;
+  background-color: $size_menu_bg;
+  border-right: 1px solid $side_menu_border_color;
+  overflow: hidden;
+  position: fixed;
+  top: 60px;
+  width: 100%;
+  .navbar {
+    border: none;
+  }
+  .navbar-header {
+    width: 100%;
+    border-bottom: 1px solid $side_menu_border_color;
+  }
+  .navbar-nav {
+    .active a {
+      background-color: transparent;
+      margin-right: -1px;
+      border-right: 5px solid $side_menu_border_color;
+    }
+    li {
+      display: block;
+      width: 100%;
+      border-bottom: 1px solid $side_menu_border_color;
+      a {
+        padding: 15px;
+        .glyphicon {
+          padding-right: 10px;
+        }
+      }
+    }
+  }
+  #dropdown {
+    border: 0;
+    margin-bottom: 0;
+    border-radius: 0;
+    background-color: transparent;
+    box-shadow: none;
+    .caret {
+      float: right;
+      margin: 9px 5px 0;
+    }
+    .indicator {
+      float: right;
+    }
+    > a {
+      border-bottom: 1px solid $side_menu_border_color;
+    }
+    .panel-body {
+      padding: 0;
+      background-color: #f3f3f3;
+      .navbar-nav {
+        width: 100%;
+        li {
+          padding-left: 15px;
+          border-bottom: 1px solid $side_menu_border_color;
+          &:last-child {
+            border-bottom: none;
+          }
+        }
+      }
+      .panel > a {
+        margin-left: -20px;
+        padding-left: 35px;
+      }
+      .panel-body {
+        margin-left: -15px;
+        li {
+          padding-left: 30px;
+          &:last-child {
+            border-bottom: 1px solid $side_menu_border_color;
+          }
+        }
+      }
+    }
+  }
+  .brand-name-wrapper {
+    min-height: 50px;
+    .navbar-brand {
+      display: block;
+    }
+  }
+}
+
+.side-body {
+  margin-left: 310px;
+}
+
+

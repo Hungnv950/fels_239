@@ -28,6 +28,7 @@ vi:
     confirm_delete: "Bạn chắc chắn ?"
     destroy: "Xóa người dùng"
     deleted: "Xóa thành công"
+    administrator: "Quản lí"
     dont_have_permission: "Bạn không có quyền này!"
     following: "Đang theo dõi"
     follower: "Theo dõi"

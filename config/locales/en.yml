@@ -36,6 +36,9 @@ en:
     logged_in: " Logged in"
     logged_out: " Logged out"
     at: " at "
+    following: "Đang theo dõi"
+    follower: "Theo dõi"
+    administrator: "Administrator"
   account:
     check_email: "Check your email for the activation link."
     active: "Account activation"
