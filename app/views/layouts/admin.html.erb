@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title><%= full_title yield :title %></title>
+      <%= csrf_meta_tags %>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <%= stylesheet_link_tag 'application', media: 'all',
+         'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application',
+         'data-turbolinks-track': 'reload' %>
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans"
+         rel="stylesheet">
+      <%= javascript_include_tag "i18n" %>
+      <%= javascript_include_tag "translations", skip_pipeline: true %>
+   </head>
+   <nav class="navbar navbar-default navbar-static-top nav_demo">
+      <div class="container-fluid">
+         <div class="navbar-header">
+            <button type="button" class="navbar-toggle navbar-toggle-sidebar collapsed">
+            <%= t "user.administrator" %>
+            </button>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+              <%= t "user.administrator" %>
+            </a>
+         </div>
+         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right sidebar_left">
+               <li>
+                 <%= link_to "Vist site", root_url, target: "_blank" %>
+               </li>
+               <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <div class="img-header">
+                    <% if @current_user.avatar? %>
+                      <%= image_tag @current_user.avatar.url(:medium)%>
+                    <% else %>
+                      <img src="<%= image_url("user.png") %>"/>
+                    <% end %>
+                    <%= current_user.name %><b class="caret"></b>
+                  </div>
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="dropdown-header"><%= t "user.setting" %></li>
+                  <li><%= link_to t("user.profile"), current_user %></li>
+                  <li><%= link_to t("user.setting"), edit_user_path(current_user) %></li>
+                  <li class="divider"></li>
+                  <li>
+                    <%= link_to t("home.logout"), logout_path, method: :delete %>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+         </div>
+      </div>
+   </nav>
+   <div class="container-fluid main-container">
+     <div class="row">
+        <div class="col-md-2 sidebar">
+         <div class="row">
+            <div class="absolute-wrapper"> </div>
+            <div class="side-menu">
+               <nav class="navbar navbar-default" role="navigation">
+                  <div class="side-menu-container">
+                     <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">
+                          <span class="glyphicon glyphicon-dashboard"></span>
+                          <%= t "user.administrator" %></a>
+                        </li>
+                        <li class="panel panel-default" id="dropdown">
+                        <%= link_to admin_categories_path do %>
+                          <span class="glyphicon glyphicon-plane"></span>
+                          <%= t "category.category" %>
+                        <% end %>
+                           <div id="dropdown-lvl1" class="panel-collapse collapse">
+                              <div class="panel-body">
+                                 <ul class="nav navbar-nav">
+                                    <li><a href="#">Link</a></li>
+                                    <li><a href="#">Link</a></li>
+                                    <li><a href="#">Link</a></li>
+                                    <li class="panel panel-default" id="dropdown">
+                                       <a data-toggle="collapse" href="#dropdown-lvl2">
+                                       <span class="glyphicon glyphicon-off"></span> Sub Level <span class="caret"></span>
+                                       </a>
+                                       <div id="dropdown-lvl2" class="panel-collapse collapse">
+                                          <div class="panel-body">
+                                             <ul class="nav navbar-nav">
+                                                <li><a href="#">Link</a></li>
+                                                <li><a href="#">Link</a></li>
+                                                <li><a href="#">Link</a></li>
+                                             </ul>
+                                          </div>
+                                       </div>
+                                    </li>
+                                 </ul>
+                              </div>
+                           </div>
+                        </li>
+                        <li>
+                          <%= link_to admin_words_path do %>
+                            <span class="glyphicon glyphicon-cloud"></span>
+                            <%= t "word.word" %>
+                          <% end %>
+                        </li>
+                        <li>
+                          <%= link_to admin_users_path do %>
+                            <span class="glyphicon glyphicon-user"></span>
+                            <%= t "user.user" %>
+                          <% end %>
+                        </li>
+                     </ul>
+                  </div>
+               </nav>
+            </div>
+         </div>
+      </div>
+      <div class="col-md-10 content_view">
+         <%= yield %>
+      </div>
+     </div>
+   </div>
+   <%= render "layouts/footer" %>
+</html>

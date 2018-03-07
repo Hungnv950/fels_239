@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root "pages#index"
+  get "/admin", to: "admin#index"
   get "/signup", to: "users#new"
   post "/signup", to: "users#create"
   get "/login", to: "sessions#new"
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
     resources :categories
     resources :words
     resources :answers, only: :destroy
+    resources :users
   end
   resources :pages
   resources :categories
