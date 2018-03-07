@@ -8,4 +8,13 @@ module ApplicationHelper
       page_title + " | " + base_title
     end
   end
+
+  def pagination obj, per
+    obj.paginate page: params[:page], per_page: per
+  end
+
+  def page_index
+    params[:page] ?
+      (params[:page].to_i - 1) * Settings.category.per_page + 1 : 1
+  end
 end

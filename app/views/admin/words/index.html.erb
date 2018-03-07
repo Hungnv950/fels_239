@@ -8,7 +8,7 @@
           <div class="col-md-6">
             <h3>
               <%= t "word.all" %> (<%= t "word.total" %> :
-                <%= @words.size %>)
+                <%= Word.all.size %>)
             </h3>
           </div>
           <div class="col-md-6">
@@ -23,6 +23,20 @@
                 </div>
               </div>
             </form>
+          </div>
+        </div>
+
+        <button class="btn btn-primary btn-sm" data-toggle="modal"
+          data-target=".bd-example-modal-lg">
+            <%= t "word.create" %>
+          </button>
+        <div class="modal fade bd-example-modal-lg"
+          tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+            aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <%= render "form" %>
+            </div>
           </div>
         </div>
 
@@ -73,13 +87,12 @@
             <% if @words.size < 1 %>
               <%= t "word.nil" %>
             <% else %>
-              <% @words.each_with_index do |word, i| %>
-                <%= render partial: "word", locals: {word: word, i: i} %>
-              <% end %>
+              <%= render "index" %>
             <% end %>
           </tbody>
         </table>
         <div class="center">
+          <%= paginate @words %>
         </div>
       </div>
     </div>
