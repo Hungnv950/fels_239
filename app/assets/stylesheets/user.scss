@@ -1,20 +1,27 @@
+$active_color: #5b9bd1;
+$profile_a_color: #93a3b5;
+$profile_bottom_color: #f0f4f7;
+$profile_user_title_color: #5a7391;
+$profile_bg_hover_color: #fafcfd;
+$profile_a_active_color: #f6f9fb;
+
 .profile {
   margin: 20px 0;
 }
 
 .profile-sidebar {
   padding: 20px 0 10px 0;
-  background: #fff;
 }
 
 .profile-userpic img {
-  float: none;
-  margin: 0 auto;
-  width: 200px;
-  height: 200px;
-  -webkit-border-radius: 50% !important;
   -moz-border-radius: 50% !important;
+  -webkit-border-radius: 50% !important;
   border-radius: 50% !important;
+  float: none;
+  height: 200px;
+  margin: 0 auto;
+  padding-bottom: 10px;
+  width: 200px;
 }
 
 .profile-usertitle {
@@ -23,7 +30,7 @@
 }
 
 .profile-usertitle-name {
-  color: #5a7391;
+  color: $profile_user_title_color;
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 7px;
@@ -31,7 +38,7 @@
 
 .profile-usertitle-job {
   text-transform: uppercase;
-  color: #5b9bd1;
+  color: $active_color;
   font-size: 12px;
   font-weight: 600;
   margin-bottom: 15px;
@@ -55,12 +62,12 @@
 .profile-usermenu {
   margin-top: 30px;
   ul li {
-    border-bottom: 1px solid #f0f4f7;
+    border-bottom: 1px solid $profile_bottom_color;
     &:last-child {
       border-bottom: none;
     }
     a {
-      color: #93a3b5;
+      color: $profile_a_color;
       font-size: 14px;
       font-weight: 400;
       i {
@@ -68,17 +75,17 @@
         font-size: 14px;
       }
       &:hover {
-        background-color: #fafcfd;
-        color: #5b9bd1;
+        background-color: $profile_bg_hover_color;
+        color: $active_color;
       }
     }
     &.active {
       border-bottom: none;
     }
     &.active a {
-      color: #5b9bd1;
-      background-color: #f6f9fb;
-      border-left: 2px solid #5b9bd1;
+      background-color: $profile_a_active_color;
+      border-left: 2px solid $active_color;
+      color: $active_color;
       margin-left: -2px;
     }
   }
@@ -86,6 +93,5 @@
 
 .profile-content {
   padding: 20px;
-  background: #fff;
   min-height: 460px;
 }

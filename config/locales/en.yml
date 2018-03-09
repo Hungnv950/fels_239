@@ -29,8 +29,9 @@ en:
     destroy: "Delete User"
     deleted: "User deleted"
     dont_have_permission: "You don't have permission!"
-    following: "Đang theo dõi"
-    follower: "Theo dõi"
+    following: "Following"
+    follower: "Follwer"
+    learned: "Learned"
   account:
     check_email: "Check your email for the activation link."
     active: "Account activation"
@@ -41,6 +42,7 @@ en:
     link_failed: "Link failed"
     not_actived: "Account not actived"
   category:
+    category: "Category"
     name: "Name"
     update: "Update category"
     delete: "Delete category"
@@ -58,6 +60,8 @@ en:
     not_found: "Category not found"
     delete_all: "Delete selected"
     confirm: "Are you sure?"
+    view: "View Category"
+    show: "words in this category"
   word:
     words: "Words"
     name: "Name"
@@ -83,3 +87,4 @@ en:
     present: "Answer must be present"
     deleted: "Word deleted"
     deleted_failed: "Word delete failed"
+    answer: "Answer"

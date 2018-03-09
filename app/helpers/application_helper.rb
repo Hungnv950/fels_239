@@ -17,4 +17,8 @@ module ApplicationHelper
     params[:page] ?
       (params[:page].to_i - 1) * Settings.category.per_page + 1 : 1
   end
+
+  def path_for_word_object object
+    object.persisted? ? admin_word_url(object) : admin_words_url
+  end
 end
