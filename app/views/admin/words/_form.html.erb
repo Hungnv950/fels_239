@@ -1,19 +1,26 @@
 <div class="panel panel-default">
-  <div class="panel-heading">
-    <%= yield(:create) %>
+  <div class="modal-header">
+    <h3 class="modal-title" id="exampleModalLongTitle">
+      <%= @title %>
+    </h3>
+    <button type="button" class="close"
+      data-dismiss="modal" aria-label="Close">
+      <span class="glyphicon glyphicon-remove"></span>
+    </button>
   </div>
   <div class="panel-body">
     <div id="notifi"></div>
-    <%= form_for @word, url: admin_words_path,
-      method: :post, remote: true do |f| %>
+    <%= form_for @word, url: path_for_word_object(@word),
+      remote: true do |f| %>
     <%= f.label :content, t("word.content")  %>
     <%= f.text_area :content, class: "form-control" %>
     <%= f.label :category, t("word.category")  %>
     <%= f.collection_select(:category_id,
       @categories_search, :id, :name, class: "dropdown-menu")%>
     <%= f.label :answers, t("word.answers") %>
-    <span class="btn glyphicon glyphicon-plus"
-      id="duplicate_nested_form"></span></span>
+    <span class="btn btn-success btn-xs glyphicon glyphicon-plus"
+      id="duplicate_nested_form" title="<%= t "answer.add_answer" %>">
+    </span>
     <table class="table table-hover table-condensed table-stripe">
       <thead>
         <tr>
@@ -23,25 +30,25 @@
         </tr>
       </thead>
       <tbody id="table-form">
-        <input id="count_answer" value=1 type ="hidden" />
+        <input id="count_answer" value=1 type ="hidden"/>
         <%= f.fields_for :answers do |answers| %>
           <tr class="center">
             <td>
               <%= answers.text_field :content,
-                class: "form-control answer_unique"%>
+                class: "form-control answer_unique input_answer" %>
             </td>
             <td>
               <%= answers.check_box :is_correct %>
             </td>
             <td>
-              <span class="btn red glyphicon glyphicon-ban-circle"
-                id=remove_answer0></span>
+              <span class="btn glyphicon glyphicon-remove remove_answer"
+                title="<%= t "answer.remove_answer" %>"></span>
             </td>
           </tr>
         <% end %>
       </tbody>
     </table>
-    <%= f.submit yield(:create) ,class: "btn btn-primary", id: "create_word"%>
+    <%= f.submit @title ,class: "btn btn-primary", id: "create_word" %>
     <% end %>
   </div>
 </div>

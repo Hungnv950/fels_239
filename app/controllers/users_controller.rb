@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
+  layout 'user'
+
   before_action :logged_in_user, only: [:edit, :update, :destroy]
-  before_action :load_user, only: [:show, :edit, :update, :destroy]
+  before_action :load_user, except: [:new, :index, :create]
   before_action :correct_user, only: [:destroy,:update, :edit]
   before_action :user_follow, only: [:show]
 
@@ -21,7 +23,10 @@ class UsersController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @lesson_doing = @user.lessons.select(:id).where(:is_finished => true)
+    @lesson_finished = @user.lessons.select(:id).where(:is_finished => false)
+  end
 
   def edit; end
 

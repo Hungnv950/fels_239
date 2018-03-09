@@ -82,7 +82,13 @@ vi:
     answers: "Trả lời"
     category: "Danh mục"
     max: "Số lượng câu trả lời phải bé hơn 6"
+    min: "Số lượng câu trả lời phải lớn hơn 1"
     exits: "đã tồn tại"
     checkbox: "Phải có một đáp án đúng và một đáp án sai"
     present: "Đáp án không được để trống"
     answer: "Đáp án"
+  answer:
+    answer: "Đáp án"
+    is_correct: "Không thể xóa"
+    add_answer: "Thêm đáp án"
+    remove_answer: "Xóa đáp án"

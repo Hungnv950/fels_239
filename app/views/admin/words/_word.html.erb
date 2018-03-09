@@ -1,26 +1,27 @@
 <tr>
-  <td class="center"><%= i + page_index %></td>
+  <td class="center"><%= index + page_index %></td>
   <td><%= word.content %></td>
   <td>
     <%= render word.answers %>
   </td>
   <td class="center"><%= word.category.name %></td>
   <td class="col-md-3 center">
-    <a data-toggle="modal" data-target="#myModal"
-      data-remote="<%= edit_admin_word_path(word) %>
-        #modal-edit-fields" class="btn btn-mini">
+
+    <%= link_to edit_admin_word_url(word), remote:true do %>
       <span data-placement="top" data-toggle="tooltip"
-        title="<%= t "word.edit" %>">
+        title="<%= t "word.edit" %>" data-toggle="modal"
+          data-target=".bd-example-modal-lg">
         <button class="btn btn-primary btn-xs"
           data-title="<%= t "word.edit" %>"
           data-toggle="modal" data-target="#edit" >
           <span class="glyphicon glyphicon-pencil"></span>
         </button>
       </span>
-    </a>
-    <%= link_to admin_word_url(word), remote:true,
-      method: :delete,data: {confirm:
-        t("user.confirm_delete")} do %>
+    <% end %>
+
+    <%= link_to admin_word_url(word),
+      remote:true, method: :delete,
+        data: {confirm: t("user.confirm_delete")} do %>
       <span data-placement="top" data-toggle="tooltip"
         title="<%= t "word.delete" %>">
         <button class="btn btn-danger btn-xs"

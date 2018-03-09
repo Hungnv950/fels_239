@@ -115,6 +115,13 @@ input, textarea, select, .uneditable-input {
 
 .answer {
   list-style-type: upper-alpha;
+  .right {
+    float: right;
+  }
+  .row {
+    margin: -20px 10px 10px 0px;
+    border-bottom: 1px solid #77767636;
+  }
 }
 
 .red {

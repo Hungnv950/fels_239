@@ -1,13 +1,19 @@
 class Admin::WordsController < AdminController
-  before_action :load_words, :load_category, only: [:index, :create]
+  before_action :load_category, :load_words, only: [:index, :edit]
+  before_action :load_word, only: [:edit, :update]
 
   def index
     @word = Word.new
-    2.times {@word.answers.build}
+    @title =  t "word.create"
+    Settings.answer.MIN_ANSWER_NUMBER.times {@word.answers.build}
   end
 
   def new
-     @word = Word.new
+    @word = Word.new
+    Settings.answer.MIN_ANSWER_NUMBER.times {@word.answers.build}
+    respond_to do |format|
+      format.js
+    end
   end
 
   def create
@@ -48,6 +54,25 @@ class Admin::WordsController < AdminController
     end
   end
 
+  def edit
+    @title =  t "word.update"
+    respond_to do |format|
+      format.html {redirect_to @words}
+      format.js
+    end
+  end
+
+  def update
+    @word.update_attributes word_params
+    @words = Word.search_scope(params[:search], params[:category])
+        .includes(:answers, :category)
+          .order_default.page params[:page]
+    respond_to do |format|
+      format.html {redirect_to @words}
+      format.js
+    end
+  end
+
   private
 
   def load_words
@@ -63,5 +88,9 @@ class Admin::WordsController < AdminController
   def word_params
     params.require(:word).permit :content, :category_id,
       answers_attributes: [:id, :is_correct, :content]
+  end
+
+  def load_word
+    @word = Word.find_by id: params[:id]
   end
 end
