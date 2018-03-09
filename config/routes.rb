@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :categories
     resources :words
+    resources :answers, only: :destroy
   end
   resources :pages
   resources :categories
