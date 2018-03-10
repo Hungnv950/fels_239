@@ -106,3 +106,5 @@ en:
     saved: "Lesson saved"
     result: "Result"
     result_waiting: "Your lession is not compelte"
+    lesson_doing: "You have %{lesson_doing_count} lesson doing: "
+    lesson_finished: "You have %{lesson_finished_count} lesson finished: "
