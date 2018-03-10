@@ -19,6 +19,8 @@ class User < ApplicationRecord
   before_save :downcase_email
   before_save :create_activation_digest
 
+  paginates_per Settings.word.per_page
+
   class << self
     def digest string
       cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST
@@ -59,6 +61,14 @@ class User < ApplicationRecord
 
   def following? other_user
     following.include? other_user
+  end
+
+  def learned_words abc
+    !abc.blank? ?
+      lessons = self.lessons.where("is_finished = (?) and category_id like (?)",true, abc) :
+        lessons = self.lessons
+    user_answers = Result.lesson_answers lessons.ids
+    Answer.user_answers(user_answers).select :word_id, :content, :id, :is_correct
   end
 
   private

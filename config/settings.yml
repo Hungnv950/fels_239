@@ -4,6 +4,7 @@ user:
   password: 120
   avatar_medium: "200x200>"
   avatar_header: "100x100>"
+  per_page: 20
 category:
   per_page: 20
 word:
@@ -11,6 +12,7 @@ word:
   MAXIUM_SIZE: 20
 answer:
   size: 20
+  per_page: 20
   MIN_ANSWER_NUMBER: 2
 lesson:
   words_size: 20

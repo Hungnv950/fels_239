@@ -8,6 +8,9 @@ class Lesson < ApplicationRecord
 
   before_create :create_words
 
+  scope :lessons_finished, -> {select(:id).where(:is_finished => true)}
+  scope :lessons_doing, -> {select(:id).where(:is_finished => false)}
+
   class << self
 
     def generate_words category_id

@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:edit, :update, :destroy]
-  before_action :load_user, only: [:show, :edit, :update, :destroy]
+  layout "user", only: [:show, :edit, :update]
+
+  before_action :logged_in_user, except: :new
+  before_action :load_user, except: [:new, :index, :create]
   before_action :correct_user, only: [:destroy,:update, :edit]
   before_action :user_follow, only: [:show]
 
@@ -21,7 +23,22 @@ class UsersController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    correct_answers = params[:correct_answers]
+    category_id = params[:category]
+    if correct_answers
+      correct_answers == "true" ? @answers =
+        @user.learned_words(category_id).correct_answers.page(params[:page]) :
+          @answers = @user.learned_words(category_id).wrong_answers.page(params[:page])
+    else
+      @answers = @user.learned_words(category_id).page params[:page]
+    end
+    @lessons_doing = @user.lessons.lessons_doing
+    @lessons_finished = @user.lessons.lessons_finished
+    @categories_search = @user.lessons.includes(:category)
+      .select(:category_id, :name).distinct(:category_id)
+
+  end
 
   def edit; end
 

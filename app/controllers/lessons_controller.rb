@@ -1,5 +1,7 @@
 class LessonsController < ApplicationController
   before_action :load_lesson, only: [:show, :update]
+  before_action :logged_in_user, except: [:index, :show, :words]
+  after_action :log_update, only: [:create, :update]
 
   def index
     @lessons = Lesson.all
@@ -40,5 +42,24 @@ class LessonsController < ApplicationController
 
   def load_lesson
     @lesson = Lesson.find_by id: params[:id]
+  end
+
+  def logged_in_user
+    return if logged_in?
+    store_location
+    flash[:danger] = t "user.please_login"
+    redirect_to login_url
+  end
+
+  def log_update
+    if action_name == "index"
+      action_type = 2
+    else
+      action_type = (action_name == "create") ? 3 : 4
+    end
+    target_id = params[:id] ? params[:id] : @lesson.id
+    Activity.create(
+      :user_id => current_user.id,
+        :target_id => target_id, :action_type => action_type)
   end
 end

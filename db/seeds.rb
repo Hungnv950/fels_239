@@ -31,20 +31,21 @@ end
     content: name,
     category_id: 28,
     answers_attributes:
-      { 0 =>
+      {
+        0 =>
           {
-              content: name,
-              is_correct: true
+            content: name,
+            is_correct: true
           },
         1 =>
           {
-              content: name+"AN",
-              is_correct: false
+            content: name+"AN",
+            is_correct: false
           },
         2 =>
         {
-            content: name+"A",
-            is_correct: false
+          content: name+"A",
+          is_correct: false
         }
       }
     )
