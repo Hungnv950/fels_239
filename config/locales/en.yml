@@ -29,9 +29,9 @@ en:
     destroy: "Delete User"
     deleted: "User deleted"
     dont_have_permission: "You don't have permission!"
-    following: "Following"
-    follower: "Follwer"
-    learned: "Learned"
+    following: "Đang theo dõi"
+    follower: "Theo dõi"
+    administrator: "Administrator"
   account:
     check_email: "Check your email for the activation link."
     active: "Account activation"

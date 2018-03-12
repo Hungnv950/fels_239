@@ -34,6 +34,7 @@
               </div>
             </a>
             <ul class="dropdown-menu">
+              <li class="dropdown-header"><%= t "user.setting" %></li>
               <li><%= link_to t("user.profile"), current_user %></li>
               <li><%= link_to t("user.setting"), edit_user_path(current_user) %></li>
               <li class="divider"></li>
