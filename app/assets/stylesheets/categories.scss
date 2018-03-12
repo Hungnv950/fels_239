@@ -1,7 +1,6 @@
 $category_bg_color: #cccccc;
 $category_text_color: #fff;
 $category_border_color: #ddd;
-$category_border: #ddd;
 
 .category {
   padding: 10px;
@@ -49,8 +48,8 @@ $category_border: #ddd;
     top: -20px;
     width: 100%;
     h3 {
-      border-top: 1px solid $category_border;
-      border-bottom: 1px solid $category_border;
+      border-top: 1px solid $category_border_color;
+      border-bottom: 1px solid $category_border_color;
       padding: 12px;
     }
   }

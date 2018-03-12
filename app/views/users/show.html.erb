@@ -1,66 +1,122 @@
-<div class="container">
-    <div class="row profile">
-    <div class="col-md-3">
-      <div class="profile-sidebar">
+<p>
+  <% if @lessons_doing_size > 0 %>
+    <%= t("lesson.lesson_doing", lesson_doing_count: @lessons_doing_size) %>
+    <% @lessons_doing.each do |lesson| %>
+      <%= link_to lesson_url(lesson) do %>
+        <%= t "lesson.lesson" %>
+        <%= lesson.id %>
+      <% end -%>
+    <% end %>
+  <% end %>
+</p>
 
-        <div class="profile-userpic">
-          <% if @user.avatar? %>
-            <%= image_tag @user.avatar.url(:medium), class: "img-responsive"  %>
-          <% else %>
-            <img src="<%= image_url("user.png") %>" class="img-responsive" alt="">
-          <% end %>
-        </div>
+<p>
+  <% if @lessons_finished_size > 0 %>
+    <%= t("lesson.lesson_finished", lesson_finished_count: @lessons_finished_size) %>
+    <% @lessons_finished.each do |lesson| %>
+      <%= link_to lesson_url(lesson) do %>
+        <%= t "lesson.lesson" %>
+        <%= lesson.id %>
+      <% end -%>
+    <% end %>
+  <% end %>
+</p>
 
-        <div class="profile-usertitle">
-          <div class="profile-usertitle-name">
-            <%= @user.name %>
-          </div>
-        </div>
-
-        <div class="profile-userbuttons">
-          <%= render "follow_form" if logged_in? %>
-        </div>
-        <br>
-        <div class="row center">
-          <%= render "shared/stats" %>
-        </div>
-
-        <% if owner? @user %>
-          <div class="profile-usermenu">
-            <ul class="nav">
-              <li class="active">
-                <a href="#">
-                  <i class="glyphicon glyphicon-home"></i>
-                  <%= t "user.overview" %>
-                </a>
-              </li>
+<table class="table table-bordered">
+  <caption>
+    <h3>
+      <%= t "lesson.learned", learned_words: @answers_size  %>
+    </h3>
+  </caption>
+  <thead>
+    <tr class="center" >
+      <th class="center" ><%= t "word.index" %></th>
+      <th class="center" id="id01" >
+        <%= t "word.words" %>
+      </th>
+      <th class="center" >
+        <%= t "word.answer" %>
+      <th class="center col-md-2">
+        <span class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <%= t "word.category" %>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <%= link_to user_url(
+                :correct_answers => params[:correct_answers]) do %>
+                <%= t "category.all_category" %>
+              <% end %>
+            </li>
+            <% @categories_search.each do |lesson|%>
               <li>
-                <%= link_to edit_user_path(current_user) do %>
-                  <i class="glyphicon glyphicon-user"></i>
-                  <%= t "user.setting" %>
+                <%= link_to user_url(
+                  :correct_answers => params[:correct_answers],
+                    :category => lesson.category.id) do %>
+                  <%= lesson.category.name %>
                 <% end %>
               </li>
-              <li>
-                <a href="#" target="_blank">
-                  <i class="glyphicon glyphicon-ok"></i>
-                  <%= t "user.task" %>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i class="glyphicon glyphicon-flag"></i>
-                  <%= t "user.help" %>
-                </a>
-              </li>
-            </ul>
-          </div>
-        <% end %>
-      </div>
-    </div>
-    <div class="col-md-9">
-      <div class="profile-content">
-        <%= t "user.dont_have_activities" %>
-      </div>
-    </div>
+            <% end %>
+          </ul>
+        </span>
+      </th>
+      <th class="center col-md-2">
+        <span class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <%= t "user.learned" %>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <%= link_to user_url do %>
+                <%= t "user.learned" %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to user_url(
+                :category => params[:category],
+                  :correct_answers => true) do %>
+                <%= t "answer.correct_answers" %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to user_url(
+                :category => params[:category],
+                  :correct_answers => false) do %>
+                <%= t "answer.wrong_answers" %>
+              <% end %>
+            </li>
+          </ul>
+        </span>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @answers.each_with_index do |answer, index| %>
+      <tr>
+        <td class="center">
+          <%= index + 1 %>
+        </td>
+        <td>
+          <%= answer.content %>
+        </td>
+        <td>
+          <%= answer.word.content %>
+        </td>
+        <td>
+          <%= answer.word.category.name %>
+        </td>
+        <td class="center">
+          <%= answer.is_correct? ?
+            "<span class=\"glyphicon glyphicon-ok\"></span>".html_safe :
+              "<span class=\"glyphicon glyphicon-remove-circle\"></span>"
+                .html_safe %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+  <div class="center">
+    <%= paginate @answers %>
   </div>
-</div>
+</table>

@@ -12,6 +12,7 @@ word:
   MAXIUM_SIZE: 20
 answer:
   size: 20
+  per_page: 20
   MIN_ANSWER_NUMBER: 2
 lesson:
   words_size: 20

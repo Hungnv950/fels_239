@@ -12,9 +12,10 @@ class Word < ApplicationRecord
   validates_presence_of :answers
 
   paginates_per Settings.word.per_page
+
   scope :order_default, -> {order created_at: :DESC}
   scope :search_scope, (lambda do |word, category|
-    where('content like :word and category_id like :category',
+    where("content like :word and category_id like :category",
       word: "%#{word}%", category: "%#{category}%")
   end)
 
