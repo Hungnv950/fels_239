@@ -1,5 +1,5 @@
 class Answer < ApplicationRecord
   belongs_to :word
-  has_many :results
+  belongs_to :result
   validates :content, presence: true, length: {maximum: Settings.answer.size}
 end

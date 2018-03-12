@@ -22,4 +22,5 @@ Rails.application.routes.draw do
   end
   resources :pages
   resources :categories
+  resources :lessons
 end
