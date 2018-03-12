@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "pages#index"
+  root "categories#index"
   get "/admin", to: "admin#index"
   get "/signup", to: "users#new"
   post "/signup", to: "users#create"
@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   get "/words", to: "categories#words"
+
+  get "/categories", to: "pages#categories"
+  get "/words", to: "pages#words"
 
   resources :users do
     member do
@@ -19,6 +22,8 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :categories
     resources :words
+    resources :answers, only: :destroy
+    resources :users
     resources :answers, only: :destroy
     resources :users
   end
