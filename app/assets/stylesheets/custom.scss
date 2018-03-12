@@ -145,6 +145,16 @@ input, textarea, select, .uneditable-input {
   list-style-type: upper-alpha;
 }
 
+.cword_answers {
+  .success {
+    background-color: #5a8eb538;
+  }
+}
+
+.danger {
+  border: 1px solid red;
+}
+
 .footer {
   bottom: 0;
   width: 100%;

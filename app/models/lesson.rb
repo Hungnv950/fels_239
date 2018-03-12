@@ -19,6 +19,16 @@ class Lesson < ApplicationRecord
     end
   end
 
+  def correct_answers
+    count = 0
+    self.results.each do |result|
+      if Answer.find_by(id: result.answer_id) && Answer.find_by(id: result.answer_id).is_correct
+        count = count + 1
+      end
+    end
+    count
+  end
+
   private
 
   def create_words
