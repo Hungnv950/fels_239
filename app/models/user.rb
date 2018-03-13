@@ -68,6 +68,14 @@ class User < ApplicationRecord
     following.include? other_user
   end
 
+  def learned_words category_id
+    category_id.present? ?
+      lessons = self.lessons.where("is_finished = (?) and category_id like (?)",true, category_id) :
+        lessons = self.lessons
+    user_answers = Result.lesson_answers lessons.ids
+    Answer.user_answers(user_answers).select :word_id, :content, :id, :is_correct
+  end
+
   private
 
   def downcase_email

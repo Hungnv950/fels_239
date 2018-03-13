@@ -8,9 +8,6 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   get "/words", to: "categories#words"
 
-  get "/categories", to: "pages#categories"
-  get "/words", to: "pages#words"
-
   resources :users do
     member do
       get :following, :followers
@@ -20,12 +17,10 @@ Rails.application.routes.draw do
   resources :account_activations, only: :edit
   resources :relationships, only: [:create, :destroy]
   namespace :admin do
+    resources :answers, only: :destroy
     resources :categories
+    resources :users
     resources :words
-    resources :answers, only: :destroy
-    resources :users
-    resources :answers, only: :destroy
-    resources :users
   end
   resources :pages
   resources :categories

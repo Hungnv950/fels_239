@@ -1,9 +1,6 @@
 class LessonsController < ApplicationController
   before_action :load_lesson, only: [:show, :update]
-
-  def index
-    @lessons = Lesson.all
-  end
+  before_action :logged_in_user, except: :show
 
   def show; end
 
@@ -39,6 +36,15 @@ class LessonsController < ApplicationController
   end
 
   def load_lesson
-    @lesson = Lesson.find_by id: params[:id]
+    return if @lesson = Lesson.find_by(id: params[:id])
+    flash[:danger] = t "lesson.not_found"
+    redirect_to root_url
+  end
+
+  def logged_in_user
+    return if logged_in? && (@lesson.user_id == current_user.id || current_user.is_admin?)
+    store_location
+    flash[:danger] = t "lesson.permission"
+    redirect_to @lesson
   end
 end
