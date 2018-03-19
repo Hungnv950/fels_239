@@ -8,12 +8,11 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   get "/words", to: "categories#words"
 
-  resources :users do
+  resources :users, except: :index do
     member do
       get :following, :followers
     end
   end
-  resources :users
   resources :account_activations, only: :edit
   resources :relationships, only: [:create, :destroy]
   namespace :admin do

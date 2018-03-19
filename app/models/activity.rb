@@ -3,6 +3,7 @@ class Activity < ApplicationRecord
 
   enum action_type: [:login_log, :logout_log, :create_lesson,
     :doing_lesoon, :finished_lesson, :new_category]
+  paginates_per Settings.word.per_page
 
   def view_activities
     user_at = User.find_by(id: self.user_id)

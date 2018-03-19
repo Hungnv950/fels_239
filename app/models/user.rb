@@ -13,6 +13,9 @@ class User < ApplicationRecord
     thumb: Settings.user.avatar_header},
     default_url: "/images/:style/missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+  validates :name, presence: true
+  validates :email, presence: true, uniqueness: true
+  validates :password, presence: true, length: { in: 6..15 }
 
   attr_accessor :activation_token
 
