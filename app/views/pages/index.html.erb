@@ -4,6 +4,7 @@
       <%= activity %>
     </p>
   <% end %>
+  <%= paginate @activities %>
 <% else %>
   <h1><%= t "home.welcome" %></h1>
   <div class="container">

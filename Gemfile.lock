@@ -245,11 +245,8 @@ GEM
     turbolinks-source (5.1.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-<<<<<<< 8616fb04e3d89f289c7f2f148959db819ffdfe73
     uglifier (4.1.7)
-=======
     uglifier (4.1.8)
->>>>>>> Create view word list, categories
       execjs (>= 0.3.0, < 3)
     web-console (3.5.1)
       actionview (>= 5.0)

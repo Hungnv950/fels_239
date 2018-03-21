@@ -38,4 +38,6 @@ User
 Admin User
 - can manage all data
 
+
+sudo apt-get install redis-server
 bundle exec sidekiq -q default -q mailers
