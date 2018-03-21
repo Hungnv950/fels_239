@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= t "lesson.finished" %></title>
+</head>
+<body>
+  <h1>
+    <%= link_to lesson_url(@lesson) do %>
+      <%= "#{t("lesson.is_finised", id: @lesson.id)}" %>:
+    <% end %>
+  </h1>
+  <p><%= "#{t "lesson.yout_result"} : #{@result}" %></p>
+</body>
+</html>

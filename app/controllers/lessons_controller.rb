@@ -1,6 +1,7 @@
 class LessonsController < ApplicationController
   before_action :load_lesson, only: [:show, :update]
   before_action :logged_in_user, except: [:index, :show, :words]
+  before_action :owner?, except: [:index, :show, :words]
   after_action :log_update, only: [:create, :update]
 
   def show; end
@@ -23,6 +24,8 @@ class LessonsController < ApplicationController
     @lesson.update_attributes lesson_params
     if @lesson.is_finished
       flash[:success] = t "lesson.finished"
+      result = "#{@lesson.correct_answers}/#{@lesson.words.size}"
+      UserMailer::result_lesson(current_user, @lesson, result).deliver_later
     else
       flash[:success] = t "lesson.saved"
     end
@@ -42,11 +45,18 @@ class LessonsController < ApplicationController
     redirect_to root_url
   end
 
-  def logged_in_user
-    return if logged_in? && (@lesson.user_id == current_user.id || current_user.is_admin?)
+  def owner?
+    return if @lesson.user_id == current_user.id || current_user.is_admin?
     store_location
     flash[:danger] = t "lesson.permission"
     redirect_to @lesson
+  end
+
+  def logged_in_user
+    return if logged_in?
+    store_location
+    flash[:danger] = t "user.please_login"
+    redirect_to login_url
   end
 
   def log_update
