@@ -9,5 +9,4 @@ class Category < ApplicationRecord
   scope :search, (lambda do |query|
     where('name like :query', query: "%#{query}%")
   end)
-  scope :category_words, -> {joins(:words).group("id").having("count(category_id)>1")}
 end

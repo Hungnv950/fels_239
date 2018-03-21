@@ -24,11 +24,7 @@ gem "sidekiq"
 gem "sqlite3"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
-<<<<<<< df7bbbc0c628d085e44ed0228f86d0f9b22d9796
 gem 'whenever', require: false
-=======
-gem "whenever", require: false
->>>>>>> Create view word list, categories
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
