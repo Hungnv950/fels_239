@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   before_action :load_user, except: [:destroy, :new, :create]
+  before_action :log_update, only: :destroy
 
   def new; end
 
@@ -8,6 +9,8 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       if user.activated?
         log_in user
+        Activity.create :user_id => current_user.id,
+          :target_id => "", :action_type => 0
         params[:session][:remember_me] == "1" ? remember(user) : forget(user)
         redirect_back_or user
       else
@@ -34,5 +37,12 @@ class SessionsController < ApplicationController
   def user_params
     params.require(:user).permit :name, :email, :password,
       :password_confirmation
+  end
+
+  def log_update
+    action_name == "create" ? action_type = 0 : action_type = 1
+    Activity.create(
+      :user_id => current_user.id,
+        :target_id => "", :action_type => action_type)
   end
 end
