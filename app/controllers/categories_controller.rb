@@ -1,14 +1,16 @@
 class CategoriesController < ApplicationController
   before_action :load_category, only: :show
-  before_action :load_words, only: [:show, :words]
+  before_action :load_words, only: :words
   before_action :load_category_search, only: [:show, :words]
 
   def index
-    @categories = Category.category_words.order_default.select(:id, :name)
+    @categories = Category.order_default.select(:id, :name)
       .includes(:words).page params[:page]
   end
 
-  def show; end
+  def show
+    @words = @category.words.includes(:answers).page params[:page]
+  end
 
   def words
     render :show
@@ -23,13 +25,10 @@ class CategoriesController < ApplicationController
   end
 
   def load_category_search
-    @categories_search = Category.order_default.category_words
+    @categories_search = Category.select :id, :name
   end
 
   def load_words
-    category_id = params[:category] ? category_id = params[:category] : params[:id]
-    word = params[:word]
-    learned = params[:learned]
-    @words = Word.search_scope(word, category_id).page params[:page]
+    @words = Word.includes(:answers, :category).page params[:page]
   end
 end
