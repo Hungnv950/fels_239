@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = Category.category_words.order_default.select(:id, :name)
-      .includes(:words).page params[:page]
+      .preload(:words).page params[:page]
   end
 
   def show; end

@@ -10,19 +10,31 @@ class Activity < ApplicationRecord
     case self.action_type
       when "new_category"
         category_at = Category.find_by id: self.target_id
-        "<a href='categories/#{category_at.id}' target='_blank'>#{I18n.t("category.create")}
+        "<p class='alert alert-danger'>
+          <a href='categories/#{category_at.id}' target='_blank'>#{I18n.t("category.create")}
           #{I18n.t("category.category")} #{category_at.name}
-            #{I18n.t("user.at")} #{created_at}</a>".html_safe
+            #{I18n.t("user.at")} #{created_at}</a>
+        </p>".html_safe
       when "login_log"
-        I18n.t "activity.login_log", name: user_at.name, time: created_at
+        "<p class='alert alert-info'>
+          #{I18n.t "activity.login_log", name: user_at.name, time: created_at}
+        </p>".html_safe
       when "logout_log"
-        I18n.t "activity.logout_log", name: user_at.name, time: created_at
+        "<p class='alert alert-info'>
+          #{I18n.t "activity.logout_log", name: user_at.name, time: created_at}
+        </p>".html_safe
       when "create_lesson"
-        I18n.t "lesson.create_lesson", name: user.name, lesson_name: lesson_at.id, time: created_at
+        "<p class='alert alert-success'>
+          #{I18n.t "lesson.create_lesson", name: user.name, lesson_name: lesson_at.id, time: created_at}
+        </p>".html_safe
       when "doing_lesoon"
-        I18n.t "activity.doing_lesson", name: user.name, lesson_name: lesson_at.id, time: created_at
+        "<p class='alert alert-success'>
+          #{I18n.t "activity.doing_lesson", name: user.name, lesson_name: lesson_at.id, time: created_at}
+        </p>".html_safe
       when "finished_lesson"
-        I18n.t "activity.finished_lesson", name: user.name, lesson_name: lesson_at.id, time: created_at
+        "<p class='alert alert-success'>
+          #{I18n.t "activity.finished_lesson", name: user.name, lesson_name: lesson_at.id, time: created_at}
+        </p>".html_safe
       else
       end
   end

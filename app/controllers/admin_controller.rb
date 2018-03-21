@@ -12,4 +12,11 @@ class AdminController < ApplicationController
       redirect_to root_path
     end
   end
+
+  def logged_in_user
+    return if logged_in?
+    store_location
+    flash[:danger] = t "user.please_login"
+    redirect_to login_url
+  end
 end
